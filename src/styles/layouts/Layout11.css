@@ -1,0 +1,145 @@
+.layout11-container {
+    background: #fff;
+    max-width: 850px;
+    margin: 30px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding-bottom: 40px;
+    font-family: "Poppins", sans-serif;
+    color: #2c3e50;
+}
+
+/* Header */
+.layout11-header {
+    text-align: center;
+    border-bottom: 4px solid;
+    padding: 25px 20px;
+}
+
+.layout11-header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.layout11-header h3 {
+    font-weight: 500;
+    margin: 5px 0 8px;
+    color: #555;
+}
+
+.layout11-header p {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Section titles */
+section {
+    padding: 20px 40px;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding-left: 25px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #ccc;
+}
+
+.circle {
+    position: absolute;
+    left: -1px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    top: 4px;
+}
+
+.timeline-content {
+    margin-left: 25px;
+}
+
+.timeline-content h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.company {
+    font-weight: 500;
+    color: #555;
+}
+
+.duration {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.desc {
+    font-size: 0.9rem;
+    color: #444;
+}
+
+/* Skills */
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-chip {
+    border: 1.5px solid;
+    padding: 5px 12px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+}
+
+/* Education */
+.edu-item {
+    margin-bottom: 12px;
+}
+
+.edu-item h4 {
+    margin: 0;
+}
+
+/* Projects */
+.proj-item {
+    margin-bottom: 12px;
+}
+
+/* Achievements */
+.layout11-achievements ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 15px 20px;
+    }
+
+    .layout11-header h1 {
+        font-size: 1.5rem;
+    }
+}

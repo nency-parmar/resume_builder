@@ -1,0 +1,129 @@
+.layout14 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    color: #222;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* LEFT SIDEBAR */
+.left14 {
+    background-color: var(--accent);
+    color: #fff;
+    padding: 40px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.profile14 h1 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.profile14 h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #e0d7ff;
+    margin-bottom: 25px;
+}
+
+/* Sidebar Headings */
+.left14 h2 {
+    font-size: 1.1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+}
+
+.left14 p,
+.left14 li,
+.left14 span {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #f0f0f0;
+}
+
+.skills14 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skills14 li {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+}
+
+.edu-item14 {
+    margin-bottom: 10px;
+}
+
+/* RIGHT SECTION */
+.right14 {
+    background: #fff;
+    padding: 40px 35px;
+}
+
+.right14 h2 {
+    color: var(--accent);
+    border-left: 4px solid var(--accent);
+    padding-left: 8px;
+    margin-bottom: 8px;
+}
+
+.summary14 p {
+    text-align: justify;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.exp-item14,
+.proj-item14 {
+    margin-bottom: 15px;
+}
+
+.exp-item14 h4,
+.proj-item14 h4 {
+    margin: 0;
+    color: #222;
+}
+
+.company14 {
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+.exp-item14 span {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.exp-item14 p,
+.proj-item14 p {
+    font-size: 0.9rem;
+    color: #444;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .layout14 {
+        grid-template-columns: 1fr;
+    }
+
+    .left14 {
+        padding: 25px;
+        text-align: center;
+    }
+
+    .right14 {
+        padding: 25px;
+    }
+}

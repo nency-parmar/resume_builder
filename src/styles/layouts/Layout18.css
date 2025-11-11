@@ -1,0 +1,92 @@
+.layout18-container {
+    width: 850px;
+    margin: 30px auto;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    font-family: "Poppins", sans-serif;
+    color: #333;
+    padding: 40px 60px;
+    line-height: 1.6;
+}
+
+.layout18-header {
+    text-align: center;
+    border-bottom: 3px solid;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.layout18-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.layout18-contact,
+.layout18-links {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.layout18-section {
+    margin-bottom: 25px;
+}
+
+.layout18-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 4px;
+}
+
+.layout18-item {
+    margin-bottom: 15px;
+}
+
+.layout18-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.layout18-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.layout18-company {
+    font-weight: 500;
+    color: #666;
+    margin: 3px 0;
+}
+
+.layout18-skill-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.layout18-skill {
+    border: 1.5px solid;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.layout18-skill:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+    .layout18-container {
+        width: 95%;
+        padding: 25px 20px;
+    }
+
+    .layout18-header h1 {
+        font-size: 1.8rem;
+    }
+}

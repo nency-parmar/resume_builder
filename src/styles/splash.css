@@ -1,0 +1,33 @@
+/* Splash Screen */
+.splash {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #e9d4ff, #ffffff);
+    font-size: 40px;
+}
+
+.title span {
+    color: #7b2cbf;
+    font-size: 70px;
+}
+
+.btn {
+    margin-top: 20px;
+    background-color: #9264e6;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 35px;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.5);
+    transition: 0.3s ease;
+    background-color: #7b2cbf;
+}

@@ -1,0 +1,118 @@
+.layout3-container {
+    width: 850px;
+    margin: 30px auto;
+    background: linear-gradient(135deg, #f0f7ff, #eaf0f6);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    font-family: "Poppins", sans-serif;
+    color: #222;
+    padding: 30px 40px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #007acc;
+    color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.header h2 {
+    font-size: 16px;
+    color: #e0e0e0;
+}
+
+.contact p {
+    margin: 3px 0;
+    font-size: 13px;
+}
+
+section {
+    margin-bottom: 25px;
+}
+
+h3 {
+    color: #007acc;
+    border-left: 4px solid #007acc;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.summary p {
+    font-size: 15px;
+    color: #444;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill {
+    background: #007acc;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.exp-card,
+.project-card,
+.edu-card {
+    background: #fff;
+    border-left: 4px solid #007acc;
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.duration {
+    color: #666;
+    font-size: 13px;
+}
+
+.tech {
+    font-style: italic;
+    color: #555;
+    font-size: 13px;
+}
+
+.extra {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.extra ul {
+    list-style: none;
+    padding: 0;
+}
+
+.extra li {
+    background: #fff;
+    margin: 5px 0;
+    padding: 6px 10px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    font-size: 13px;
+}
+
+.footer {
+    text-align: center;
+    font-size: 13px;
+    color: #555;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+}

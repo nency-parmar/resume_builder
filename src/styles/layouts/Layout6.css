@@ -1,0 +1,106 @@
+.layout6 {
+    background: #ffffff;
+    color: #4b0082;
+    font-family: "Poppins", sans-serif;
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 10px 40px rgba(155, 89, 182, 0.2);
+    border-radius: 14px;
+    border-top: 8px solid #b197fc;
+}
+
+.header {
+    text-align: center;
+    border-bottom: 2px solid #e0c3fc;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+.name {
+    font-size: 2.5rem;
+    color: #7c3aed;
+    font-weight: 700;
+}
+
+.contact,
+.links {
+    color: #6b21a8;
+    font-size: 1rem;
+}
+
+.links a {
+    color: #8b5cf6;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #7e22ce;
+    font-size: 1.3rem;
+    border-left: 4px solid #a78bfa;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.edu-item,
+.exp-item,
+.proj-item {
+    margin-bottom: 15px;
+}
+
+.edu-item h3,
+.exp-item h3,
+.proj-item h3 {
+    color: #6d28d9;
+    font-size: 1.1rem;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skills-list span {
+    background: #ede9fe;
+    color: #6b21a8;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.achievements ul {
+    padding-left: 20px;
+    color: #4b0082;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .layout6 {
+        padding: 20px;
+    }
+
+    .name {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    .skills-list {
+        gap: 8px;
+    }
+}

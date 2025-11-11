@@ -1,0 +1,109 @@
+.layout19-container {
+    display: flex;
+    width: 850px;
+    margin: 30px auto;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    font-family: "Poppins", sans-serif;
+    color: #333;
+}
+
+/* Sidebar */
+.layout19-sidebar {
+    width: 28%;
+    color: #fff;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.sidebar-header p {
+    font-size: 0.9rem;
+    margin: 4px 0;
+    opacity: 0.9;
+}
+
+.sidebar-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 5px;
+}
+
+.sidebar-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-section li {
+    margin: 5px 0;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* Main Content */
+.layout19-main {
+    width: 72%;
+    padding: 30px 40px;
+    background: #fafafa;
+}
+
+.layout19-section {
+    margin-bottom: 25px;
+}
+
+.layout19-section h2 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 4px;
+}
+
+.layout19-item {
+    margin-bottom: 15px;
+}
+
+.layout19-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.layout19-item h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.company {
+    font-weight: 500;
+    color: #666;
+    margin: 4px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .layout19-container {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .layout19-sidebar {
+        width: 100%;
+        text-align: center;
+    }
+
+    .layout19-main {
+        width: 100%;
+        padding: 20px;
+    }
+}

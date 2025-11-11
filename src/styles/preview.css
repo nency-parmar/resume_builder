@@ -1,0 +1,134 @@
+/* 🌸 BuildMyResume Preview Page - Light Purple & White Theme */
+
+.preview-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8f5ff 0%, #ffffff 100%);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    color: #4b0082;
+    transition: all 0.3s ease-in-out;
+}
+
+.preview-page h2 {
+    font-size: 2.6rem;
+    margin-bottom: 30px;
+    color: #7c3aed;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 5px rgba(124, 58, 237, 0.15);
+    animation: fadeInDown 0.6s ease-out;
+}
+
+/* Resume Container */
+.resume-preview {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 12px 35px rgba(124, 58, 237, 0.2);
+    padding: 30px;
+    margin-bottom: 40px;
+    max-width: 850px;
+    width: 100%;
+    overflow: hidden;
+    border-top: 6px solid #a855f7;
+    transition: all 0.4s ease-in-out;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.resume-preview:hover {
+    transform: scale(1.01);
+    box-shadow: 0 15px 40px rgba(124, 58, 237, 0.25);
+}
+
+/* Button Styling */
+.btn {
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    color: #fff;
+    border: none;
+    padding: 14px 34px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #6d28d9, #9333ea);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+}
+
+/* ✨ Subtle Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🌐 Responsive Design */
+@media (max-width: 992px) {
+    .preview-page {
+        padding: 25px 10px;
+    }
+
+    .resume-preview {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .preview-page h2 {
+        font-size: 2rem;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 350px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .preview-page h2 {
+        font-size: 1.7rem;
+    }
+
+    .resume-preview {
+        padding: 15px;
+    }
+
+    .btn {
+        width: 100%;
+        font-size: 0.95rem;
+        padding: 12px 20px;
+    }
+}

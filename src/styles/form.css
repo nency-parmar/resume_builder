@@ -1,0 +1,45 @@
+.form-page {
+    background: linear-gradient(135deg, #e8eeff, #f4f6ff, #ffffff);
+    min-height: 100vh;
+}
+
+.form-card {
+    max-width: 700px;
+    width: 100%;
+    background: #ffffff;
+    border: none;
+}
+
+.form-card h2 {
+    letter-spacing: 0.5px;
+}
+
+.input-box {
+    border-radius: 10px;
+    border: 1px solid #c8d1f0;
+    transition: all 0.3s ease;
+    background-color: #fafbff;
+}
+
+.input-box:focus {
+    border-color: #4a6cf7;
+    box-shadow: 0 0 8px rgba(74, 108, 247, 0.4);
+    background-color: #fff;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #4a6cf7, #657ef8);
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 108, 247, 0.3);
+}
+
+.form-label {
+    color: #444;
+    font-size: 15px;
+}

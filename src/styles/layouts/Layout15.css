@@ -1,0 +1,141 @@
+.layout15 {
+    font-family: "Poppins", sans-serif;
+    background: #fff;
+    color: #222;
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    line-height: 1.6;
+}
+
+/* HEADER */
+.header15 {
+    text-align: center;
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.header15 h1 {
+    font-size: 2.2rem;
+    margin: 0;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.header15 h3 {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 5px 0 10px;
+}
+
+.contact15 {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* SECTION HEADINGS */
+.layout15 h2 {
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+    border-left: 4px solid var(--accent);
+    padding-left: 8px;
+}
+
+/* SUMMARY */
+.summary15 p {
+    color: #444;
+    margin-bottom: 25px;
+}
+
+/* SKILLS */
+.skill-grid15 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.skill-tag15 {
+    background: var(--accent);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.skill-tag15:hover {
+    opacity: 0.85;
+    transform: scale(1.05);
+}
+
+/* EXPERIENCE */
+.exp-item15 {
+    margin-bottom: 15px;
+}
+
+.exp-item15 h4 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+    color: #222;
+}
+
+.company15 {
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+.exp-item15 p {
+    font-size: 0.9rem;
+    color: #444;
+}
+
+/* PROJECTS */
+.proj-item15 {
+    margin-bottom: 12px;
+}
+
+.proj-item15 h4 {
+    color: #222;
+    font-size: 1rem;
+    margin-bottom: 3px;
+}
+
+/* EDUCATION */
+.edu-item15 {
+    margin-bottom: 10px;
+}
+
+.edu-item15 h4 {
+    color: #222;
+    margin-bottom: 3px;
+}
+
+.edu-item15 p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .layout15 {
+        padding: 25px 20px;
+    }
+
+    .header15 h1 {
+        font-size: 1.8rem;
+    }
+
+    .layout15 h2 {
+        font-size: 1.1rem;
+    }
+
+    .skill-tag15 {
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,159 @@
+.layout12-container {
+    display: flex;
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    color: #2c3e50;
+    background-color: #fdfdfd;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar */
+.layout12-sidebar {
+    width: 28%;
+    color: #fff;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-photo img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    margin-bottom: 20px;
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.sidebar-content {
+    width: 100%;
+}
+
+.sidebar-content h2 {
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 5px;
+    margin-top: 15px;
+}
+
+.sidebar-content p {
+    font-size: 0.85rem;
+    margin: 6px 0;
+    line-height: 1.4;
+}
+
+.sidebar-content ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.sidebar-content ul li {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+/* Main content */
+.layout12-main {
+    width: 72%;
+    padding: 40px 50px;
+    background-color: #fff;
+}
+
+.layout12-main header {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.layout12-main h1 {
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+.layout12-main h3 {
+    margin: 5px 0 10px;
+    color: #555;
+    font-weight: 500;
+}
+
+.summary {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.5;
+}
+
+/* Section Styles */
+.layout12-main section {
+    margin-bottom: 25px;
+}
+
+.layout12-main h2 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    border-bottom: 1.5px solid #eee;
+    padding-bottom: 4px;
+}
+
+/* Experience */
+.exp-item {
+    margin-bottom: 15px;
+}
+
+.exp-item h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.company {
+    font-weight: 500;
+    color: #555;
+}
+
+.duration {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.desc {
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Education */
+.edu-item {
+    margin-bottom: 12px;
+}
+
+/* Projects */
+.proj-item {
+    margin-bottom: 10px;
+}
+
+/* Achievements */
+.layout12-main ul {
+    margin-left: 20px;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .layout12-container {
+        flex-direction: column;
+    }
+
+    .layout12-sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .layout12-main {
+        width: 100%;
+        padding: 25px 20px;
+    }
+}

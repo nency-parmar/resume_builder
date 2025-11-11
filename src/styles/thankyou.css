@@ -1,0 +1,45 @@
+/* Thank You */
+.thankyou {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.myresumes-page {
+    text-align: center;
+    padding: 2rem;
+    color: #4b2aad;
+    background-color: #f8f5ff;
+    min-height: 100vh;
+}
+
+.resume-list {
+    list-style: none;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 0;
+}
+
+.resume-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.download-btn {
+    background: linear-gradient(135deg, #a883e9, #8b6cd9);
+    border: none;
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+}
