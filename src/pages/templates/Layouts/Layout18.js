@@ -16,39 +16,53 @@ export default function Layout18({ data = {}, selectedColor = "#6a1b9a" }) {
         projects = [],
     } = data;
 
+    // Helper to safely parse comma-separated or array data
+    const parseList = (input) =>
+        Array.isArray(input)
+            ? input
+            : input
+                ?.split(",")
+                .map((item) => item.trim())
+                .filter(Boolean) || [];
+
     return (
         <div className="layout18-container">
             {/* Header */}
             <header className="layout18-header" style={{ borderColor: selectedColor }}>
                 <h1 style={{ color: selectedColor }}>{name}</h1>
                 <p className="layout18-contact">
-                    {email} | {phone} | {address}
+                    {email && <span>{email}</span>}
+                    {phone && <span> | {phone}</span>}
+                    {address && <span> | {address}</span>}
                 </p>
                 <p className="layout18-links">
-                    <span>{linkedin}</span> | <span>{github}</span>
+                    {linkedin && <span>{linkedin}</span>}
+                    {github && <span> | {github}</span>}
                 </p>
             </header>
 
             <hr style={{ borderColor: selectedColor }} />
 
             {/* Summary */}
-            <section className="layout18-section">
-                <h2 style={{ color: selectedColor }}>Professional Summary</h2>
-                <p>{summary}</p>
-            </section>
+            {summary && (
+                <section className="layout18-section">
+                    <h2 style={{ color: selectedColor }}>Professional Summary</h2>
+                    <p>{summary}</p>
+                </section>
+            )}
 
             {/* Experience */}
             <section className="layout18-section">
                 <h2 style={{ color: selectedColor }}>Experience</h2>
-                {experience.length > 0 ? (
+                {experience?.length > 0 ? (
                     experience.map((exp, index) => (
                         <div key={index} className="layout18-item">
                             <div className="layout18-item-header">
-                                <h3>{exp.position || "Job Title"}</h3>
-                                <span>{exp.duration || "Duration"}</span>
+                                <h3>{exp.position || exp.role || "Job Title"}</h3>
+                                {exp.duration && <span>{exp.duration}</span>}
                             </div>
-                            <p className="layout18-company">{exp.company || "Company Name"}</p>
-                            <p>{exp.description || "Description about your role and achievements."}</p>
+                            {exp.company && <p className="layout18-company">{exp.company}</p>}
+                            {exp.description && <p>{exp.description}</p>}
                         </div>
                     ))
                 ) : (
@@ -59,11 +73,11 @@ export default function Layout18({ data = {}, selectedColor = "#6a1b9a" }) {
             {/* Projects */}
             <section className="layout18-section">
                 <h2 style={{ color: selectedColor }}>Projects</h2>
-                {projects.length > 0 ? (
+                {projects?.length > 0 ? (
                     projects.map((proj, index) => (
                         <div key={index} className="layout18-item">
-                            <h3>{proj.title || "Project Title"}</h3>
-                            <p>{proj.description || "Brief about what you built and tools used."}</p>
+                            <h3>{proj.title || proj.name || "Project Title"}</h3>
+                            {proj.description && <p>{proj.description}</p>}
                         </div>
                     ))
                 ) : (
@@ -74,12 +88,12 @@ export default function Layout18({ data = {}, selectedColor = "#6a1b9a" }) {
             {/* Education */}
             <section className="layout18-section">
                 <h2 style={{ color: selectedColor }}>Education</h2>
-                {education.length > 0 ? (
+                {education?.length > 0 ? (
                     education.map((edu, index) => (
                         <div key={index} className="layout18-item">
                             <h3>{edu.degree || "Degree"}</h3>
-                            <p>{edu.institution || "Institution Name"}</p>
-                            <span>{edu.year || "Year"}</span>
+                            <p>{edu.institution || edu.institute || "Institution Name"}</p>
+                            {edu.year && <span>{edu.year}</span>}
                         </div>
                     ))
                 ) : (
@@ -91,8 +105,8 @@ export default function Layout18({ data = {}, selectedColor = "#6a1b9a" }) {
             <section className="layout18-section">
                 <h2 style={{ color: selectedColor }}>Skills</h2>
                 <div className="layout18-skill-container">
-                    {skills.length > 0 ? (
-                        skills.map((skill, index) => (
+                    {parseList(skills).length > 0 ? (
+                        parseList(skills).map((skill, index) => (
                             <span
                                 key={index}
                                 className="layout18-skill"

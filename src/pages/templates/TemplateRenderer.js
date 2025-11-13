@@ -1,60 +1,102 @@
 import React from "react";
-import Layout1 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout1.js";
-import Layout2 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout2.js";
-import Layout3 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout3.js";
-import Layout4 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout4.js";
-import Layout5 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout5.js";
-import Layout6 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout6.js";
-import Layout7 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout7.js";
-import Layout8 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout8.js";
-import Layout9 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout9.js";
-import Layout10 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout10.js";
-import Layout11 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout11.js";
-import Layout12 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout12.js";
-import Layout13 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout13.js";
-import Layout14 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout14.js";
-import Layout15 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout15.js";
-import Layout16 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout16.js";
-import Layout17 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout17.js";
-import Layout18 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout18.js";
-import Layout19 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout19.js";
-import Layout20 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout20.js";
+import Layout1 from "../templates/Layouts/Layout1";
+import Layout2 from "../templates/Layouts/Layout2";
+import Layout3 from "../templates/Layouts/Layout3";
+import Layout4 from "../templates/Layouts/Layout4";
+import Layout5 from "../templates/Layouts/Layout5";
+import Layout6 from "../templates/Layouts/Layout6";
+import Layout7 from "../templates/Layouts/Layout7";
+import Layout8 from "../templates/Layouts/Layout8";
+import Layout9 from "../templates/Layouts/Layout9";
+import Layout10 from "../templates/Layouts/Layout10";
+import Layout11 from "../templates/Layouts/Layout11";
+import Layout12 from "../templates/Layouts/Layout12";
+import Layout13 from "../templates/Layouts/Layout13";
+import Layout14 from "../templates/Layouts/Layout14";
+import Layout15 from "../templates/Layouts/Layout15";
+import Layout16 from "../templates/Layouts/Layout16";
+import Layout17 from "../templates/Layouts/Layout17";
+import Layout18 from "../templates/Layouts/Layout18";
+import Layout19 from "../templates/Layouts/Layout19";
+import Layout20 from "../templates/Layouts/Layout20";
 
+// 🧩 Map all layouts
 const layouts = {
-    layout1: Layout1,
-    layout2: Layout2,
-    layout3: Layout3,
-    layout4: Layout4,
-    layout5: Layout5,
-    layout6: Layout6,
-    layout7: Layout7,
-    layout8: Layout8,
-    layout9: Layout9,
-    layout10: Layout10,
-    layout11: Layout11,
-    layout12: Layout12,
-    layout13: Layout13,
-    layout14: Layout14,
-    layout15: Layout15,
-    layout16: Layout16,
-    layout17: Layout17,
-    layout18: Layout18,
-    layout19: Layout19,
-    layout20: Layout20,
+    1: Layout1,
+    2: Layout2,
+    3: Layout3,
+    4: Layout4,
+    5: Layout5,
+    6: Layout6,
+    7: Layout7,
+    8: Layout8,
+    9: Layout9,
+    10: Layout10,
+    11: Layout11,
+    12: Layout12,
+    13: Layout13,
+    14: Layout14,
+    15: Layout15,
+    16: Layout16,
+    17: Layout17,
+    18: Layout18,
+    19: Layout19,
+    20: Layout20,
 };
 
+// 🌟 Preview image for all templates
+const previewImage = "https://marketplace.canva.com/EAGmJ13p8zE/1/0/1131w/canva-black-and-white-minimalist-professional-resume-a4-X9UHTVTOsqQ.jpg";
+
 export default function TemplateRenderer({
-    selectedTemplate = "template1",
+    selectedTemplate,
     data = {},
     selectedColor = "#7b2ff7",
 }) {
-    const SelectedTemplate = layouts[selectedTemplate] || layouts.template1;
+    const SelectedTemplate = layouts[selectedTemplate] || Layout1;
+
+    if (!SelectedTemplate) {
+        return (
+            <p style={{ textAlign: "center", marginTop: "40px", color: selectedColor }}>
+                ⚠️ Template not found. Please try again.
+            </p>
+        );
+    }
+
+    // Determine the prop name for color
+    const templateProps = { data };
+    if ([12, 14, 15].includes(selectedTemplate)) templateProps.color = selectedColor;
+    else if ([16, 17, 18, 19, 20].includes(selectedTemplate)) templateProps.selectedColor = selectedColor;
+    else templateProps.color = selectedColor;
+
+    // Pass preview image to template
+    templateProps.previewImage = previewImage;
 
     return (
-        <div className="template-renderer">
-            <div className="template-preview-box">
-                <SelectedTemplate data={data} color={selectedColor} />
-            </div>
+        <div
+            className="template-renderer"
+            style={{
+                border: `2px solid ${selectedColor}`,
+                background: "#fff",
+                borderRadius: "12px",
+                padding: "30px",
+                boxShadow: `0 0 25px ${selectedColor}30`,
+            }}
+        >
+            {/* 🔹 Display preview image above template */}
+            {previewImage && (
+                <img
+                    src={previewImage}
+                    alt="Template Preview"
+                    style={{
+                        width: "100%",
+                        borderRadius: "8px",
+                        marginBottom: "20px",
+                        objectFit: "cover",
+                    }}
+                />
+            )}
+
+            <SelectedTemplate {...templateProps} />
         </div>
     );
 }

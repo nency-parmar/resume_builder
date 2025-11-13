@@ -1,16 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/styles/thankyou.css";
 
 export default function ThankYou() {
     const navigate = useNavigate();
 
     return (
-        <div>
-            <div className="thankyou-page">
+        <div className="thankyou">
+            <div className="thankyou-card">
                 <h1>🎉 Thank You!</h1>
                 <p>Your resume has been successfully generated and downloaded!</p>
-                <button className="home-btn" onClick={() => navigate("/dashboard")}>
-                    Back to Home
+                <button
+                    className="home-btn"
+                    onClick={() => navigate("/dashboard")}
+                    aria-label="Back to Home"
+                >
+                    Back to Dashboard
                 </button>
             </div>
         </div>

@@ -1,3 +1,4 @@
+/* Main Styles */
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -5,29 +6,30 @@ body {
   color: #333;
 }
 
-/* Navbar */
-.navbar {
-  background-color: #a883e9;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 30px;
+/* 🌟 Global Button Style for all .btn */
+.btn {
+  background: linear-gradient(135deg, var(--theme-color, #7b2ff7), var(--theme-color, #9d4edd));
+  color: #fff;
+  border: none;
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  letter-spacing: 0.4px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.logo {
-  font-weight: bold;
-  font-size: 22px;
+/* 🧠 Hover: just scale, no color change */
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
-.nav-link {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-}
-
-.nav-link:hover {
-  text-decoration: underline;
+/* 👆 Active: return to normal */
+.btn:active {
+  transform: scale(1);
 }
 
 /* Home */
@@ -40,6 +42,7 @@ body {
   color: #a883e9;
 }
 
+/* Buttons */
 .primary-btn {
   background-color: #a883e9;
   color: white;
@@ -84,164 +87,4 @@ body {
   .builder-container {
     flex-direction: column;
   }
-}
-
-.about-page {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f5f3ff 0%, #ede7f6 100%);
-  padding: 50px 20px;
-}
-
-.about-content {
-  max-width: 850px;
-  background-color: #fff;
-  border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(120, 90, 200, 0.15);
-  padding: 3rem;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.about-content:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(120, 90, 200, 0.25);
-}
-
-.about-title {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #4a148c;
-  font-weight: 700;
-}
-
-.about-title span {
-  color: #7e57c2;
-}
-
-.about-desc {
-  color: #555;
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin-bottom: 15px;
-}
-
-.creator-card {
-  margin-top: 40px;
-  background: #f3e5f5;
-  border-radius: 15px;
-  padding: 2rem;
-  box-shadow: 0 5px 10px rgba(90, 60, 160, 0.1);
-  transition: 0.3s;
-}
-
-.creator-card:hover {
-  background: #ede7f6;
-}
-
-.creator-card .avatar {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-.creator-card h2 {
-  color: #4a148c;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.creator-card h2 span {
-  color: #7e57c2;
-}
-
-.creator-card p {
-  color: #444;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.dashboard {
-  padding: 40px 20px;
-  background: linear-gradient(135deg, #faf6ff, #f2ebff);
-  text-align: center;
-  min-height: 100vh;
-}
-
-.dashboard-title {
-  color: #6a1b9a;
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.search-bar {
-  padding: 10px 15px;
-  border-radius: 10px;
-  border: 1px solid #d0b3ff;
-  width: 60%;
-  max-width: 400px;
-  margin-bottom: 30px;
-  outline: none;
-}
-
-.dashboard-templates {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-}
-
-.dashboard-card {
-  width: 200px;
-  height: 180px;
-  border-radius: 15px;
-  background: white;
-  box-shadow: 0 4px 12px rgba(123, 47, 247, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.dashboard-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(123, 47, 247, 0.2);
-}
-
-.dashboard-card h3 {
-  margin: 10px 0;
-  color: #6a1b9a;
-  font-weight: 600;
-}
-
-.customize-btn {
-  background-color: #8e44ad;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 15px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.customize-btn:hover {
-  background-color: #732d91;
-}
-
-.view-more-btn {
-  margin-top: 40px;
-  background-color: #a66bff;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  padding: 12px 25px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.view-more-btn:hover {
-  background-color: #7b2ff7;
 }

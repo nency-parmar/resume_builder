@@ -5,7 +5,14 @@ import "../index.css";
 export default function Navbar() {
   return (
     <nav className="navbar">
-      <h1><Link to="/dashboard" className="logo">BuildMyResume</Link></h1>
+      {/* Logo */}
+      <h1 className="logo">
+        <Link to="/dashboard">
+          BuildMyResume
+        </Link>
+      </h1>
+
+      {/* Navigation Links */}
       <ul>
         <li><Link to="/dashboard">Home</Link></li>
         <li><Link to="/about">About</Link></li>

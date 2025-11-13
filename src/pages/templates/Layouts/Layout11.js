@@ -1,8 +1,8 @@
-// components/templates/Layout11.js
+// src/pages/templates/Layouts/Layout11.js
 import React from "react";
-import "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/styles/layouts/Layout11.css";
+import "../../../styles/layouts/Layout11.css";
 
-export default function Layout11({ data = {}, selectedColor = "#6a1b9a" }) {
+export default function Layout11({ data = {}, color = "#6a1b9a" }) {
     const {
         name = "Your Name",
         title = "Full Stack Developer",
@@ -11,7 +11,7 @@ export default function Layout11({ data = {}, selectedColor = "#6a1b9a" }) {
         address = "Rajkot, Gujarat, India",
         linkedin = "linkedin.com/in/username",
         github = "github.com/username",
-        summary = "Motivated developer skilled in building responsive web apps and creating innovative solutions using modern technologies.",
+        summary = "",
         skills = [],
         education = [],
         experience = [],
@@ -19,144 +19,139 @@ export default function Layout11({ data = {}, selectedColor = "#6a1b9a" }) {
         achievements = [],
     } = data;
 
+    // 🧠 Helper for handling string/array lists safely
+    const parseList = (input) =>
+        Array.isArray(input)
+            ? input
+            : input
+                ?.split(",")
+                .map((s) => s.trim())
+                .filter(Boolean) || [];
+
     return (
-        <div className="layout11-container">
-            {/* Header */}
-            <header
-                className="layout11-header"
-                style={{ borderColor: selectedColor }}
-            >
-                <h1 style={{ color: selectedColor }}>{name}</h1>
+        <div
+            className="layout11-container"
+            style={{
+                "--primary-color": color,
+                "--accent-color": color,
+            }}
+        >
+            {/* HEADER */}
+            <header className="layout11-header" style={{ borderColor: "var(--primary-color)" }}>
+                <h1 style={{ color: "var(--primary-color)" }}>{name}</h1>
                 <h3>{title}</h3>
-                <p>{email} | {phone} | {linkedin} | {github}</p>
+                <p>
+                    {email && <>{email}</>}
+                    {phone && <> | {phone}</>}
+                    {address && <> | {address}</>}
+                    {linkedin && (
+                        <>
+                            {" "}
+                            |{" "}
+                            <a href={`https://${linkedin}`} target="_blank" rel="noreferrer">
+                                LinkedIn
+                            </a>
+                        </>
+                    )}
+                    {github && (
+                        <>
+                            {" "}
+                            |{" "}
+                            <a href={`https://${github}`} target="_blank" rel="noreferrer">
+                                GitHub
+                            </a>
+                        </>
+                    )}
+                </p>
             </header>
 
-            {/* Summary */}
-            <section className="layout11-summary">
-                <h2 style={{ color: selectedColor }}>Profile Summary</h2>
-                <p>{summary}</p>
-            </section>
+            {/* SUMMARY */}
+            {summary && (
+                <section className="layout11-summary">
+                    <h2>Profile Summary</h2>
+                    <p>{summary}</p>
+                </section>
+            )}
 
-            {/* Experience Timeline */}
-            <section className="layout11-timeline">
-                <h2 style={{ color: selectedColor }}>Experience</h2>
-                <div className="timeline">
-                    {experience.length
-                        ? experience.map((exp, i) => (
+            {/* EXPERIENCE TIMELINE */}
+            {experience?.length > 0 && (
+                <section className="layout11-timeline">
+                    <h2>Experience</h2>
+                    <div className="timeline">
+                        {experience.map((exp, i) => (
                             <div key={i} className="timeline-item">
-                                <div className="circle" style={{ backgroundColor: selectedColor }}></div>
+                                <div className="circle" style={{ backgroundColor: "var(--primary-color)" }}></div>
                                 <div className="timeline-content">
-                                    <h4>{exp.role}</h4>
-                                    <p className="company">{exp.company}</p>
-                                    <span className="duration">{exp.duration}</span>
-                                    <p className="desc">{exp.description}</p>
-                                </div>
-                            </div>
-                        ))
-                        : [
-                            {
-                                role: "Frontend Intern",
-                                company: "Tech Vision Pvt. Ltd.",
-                                duration: "May 2024 - July 2024",
-                                description:
-                                    "Developed reusable React components and improved UI/UX of internal dashboard.",
-                            },
-                            {
-                                role: "Freelance Developer",
-                                company: "Self-Employed",
-                                duration: "2023 - Present",
-                                description:
-                                    "Built responsive websites for clients using MERN stack.",
-                            },
-                        ].map((exp, i) => (
-                            <div key={i} className="timeline-item">
-                                <div className="circle" style={{ backgroundColor: selectedColor }}></div>
-                                <div className="timeline-content">
-                                    <h4>{exp.role}</h4>
-                                    <p className="company">{exp.company}</p>
-                                    <span className="duration">{exp.duration}</span>
-                                    <p className="desc">{exp.description}</p>
+                                    <h4>{exp.role || exp.position || "Role"}</h4>
+                                    {exp.company && <p className="company">{exp.company}</p>}
+                                    {exp.duration && <span className="duration">{exp.duration}</span>}
+                                    {exp.description && <p className="desc">{exp.description}</p>}
                                 </div>
                             </div>
                         ))}
-                </div>
-            </section>
+                    </div>
+                </section>
+            )}
 
-            {/* Education */}
-            <section className="layout11-education">
-                <h2 style={{ color: selectedColor }}>Education</h2>
-                {education.length
-                    ? education.map((edu, i) => (
+            {/* EDUCATION */}
+            {education?.length > 0 && (
+                <section className="layout11-education">
+                    <h2>Education</h2>
+                    {education.map((edu, i) => (
                         <div key={i} className="edu-item">
-                            <h4>{edu.degree}</h4>
-                            <p>{edu.institute}</p>
-                            <span>{edu.year}</span>
-                        </div>
-                    ))
-                    : [
-                        {
-                            degree: "B.Tech in Computer Science",
-                            institute: "Darshan University",
-                            year: "2022 - 2026",
-                        },
-                    ].map((edu, i) => (
-                        <div key={i} className="edu-item">
-                            <h4>{edu.degree}</h4>
-                            <p>{edu.institute}</p>
-                            <span>{edu.year}</span>
+                            <h4>{edu.degree || "Degree"}</h4>
+                            <p>{edu.institute || edu.college || "Institute"}</p>
+                            {edu.year && <span>{edu.year}</span>}
                         </div>
                     ))}
-            </section>
+                </section>
+            )}
 
-            {/* Skills */}
-            <section className="layout11-skills">
-                <h2 style={{ color: selectedColor }}>Technical Skills</h2>
-                <div className="skills-list">
-                    {(skills.length ? skills : ["React", "Node.js", "MongoDB", "Flutter", "Java", "DBMS"]).map(
-                        (s, i) => (
-                            <span key={i} className="skill-chip" style={{ borderColor: selectedColor, color: selectedColor }}>
+            {/* SKILLS */}
+            {parseList(skills).length > 0 && (
+                <section className="layout11-skills">
+                    <h2>Technical Skills</h2>
+                    <div className="skills-list">
+                        {parseList(skills).map((s, i) => (
+                            <span
+                                key={i}
+                                className="skill-chip"
+                                style={{
+                                    borderColor: "var(--primary-color)",
+                                    color: "var(--primary-color)",
+                                }}
+                            >
                                 {s}
                             </span>
-                        )
-                    )}
-                </div>
-            </section>
+                        ))}
+                    </div>
+                </section>
+            )}
 
-            {/* Projects */}
-            <section className="layout11-projects">
-                <h2 style={{ color: selectedColor }}>Projects</h2>
-                {projects.length
-                    ? projects.map((proj, i) => (
+            {/* PROJECTS */}
+            {projects?.length > 0 && (
+                <section className="layout11-projects">
+                    <h2>Projects</h2>
+                    {projects.map((proj, i) => (
                         <div key={i} className="proj-item">
-                            <h4>{proj.name}</h4>
-                            <p>{proj.description}</p>
-                        </div>
-                    ))
-                    : [
-                        {
-                            name: "BuildMyResume",
-                            description:
-                                "Developed an ATS-friendly Resume Builder with color themes and dynamic templates.",
-                        },
-                    ].map((proj, i) => (
-                        <div key={i} className="proj-item">
-                            <h4>{proj.name}</h4>
-                            <p>{proj.description}</p>
+                            <h4>{proj.name || proj.title || "Project Title"}</h4>
+                            <p>{proj.description || ""}</p>
                         </div>
                     ))}
-            </section>
+                </section>
+            )}
 
-            {/* Achievements */}
-            <section className="layout11-achievements">
-                <h2 style={{ color: selectedColor }}>Achievements</h2>
-                <ul>
-                    {(achievements.length
-                        ? achievements
-                        : ["Winner - Hackathon 2024", "Best Developer Award at College"]).map((a, i) => (
+            {/* ACHIEVEMENTS */}
+            {parseList(achievements).length > 0 && (
+                <section className="layout11-achievements">
+                    <h2>Achievements</h2>
+                    <ul>
+                        {parseList(achievements).map((a, i) => (
                             <li key={i}>{a}</li>
                         ))}
-                </ul>
-            </section>
+                    </ul>
+                </section>
+            )}
         </div>
     );
 }

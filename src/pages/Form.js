@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/styles/form.css";
+import "../styles/form.css";
 
 export default function Form() {
     const navigate = useNavigate();
@@ -32,16 +32,38 @@ export default function Form() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         const formattedData = {
             ...formData,
-            technicalSkills: formData.technicalSkills.split(",").map((s) => s.trim()),
-            languagesKnown: formData.languagesKnown.split(",").map((l) => l.trim()),
-            hobbies: formData.hobbies.split(",").map((h) => h.trim()),
-            projects: formData.projects.split(",").map((p) => p.trim()),
-            certificates: formData.certificates.split(",").map((c) => c.trim()),
+            technicalSkills: formData.technicalSkills
+                .split(",")
+                .map((s) => s.trim())
+                .filter(Boolean),
+            languagesKnown: formData.languagesKnown
+                .split(",")
+                .map((l) => l.trim())
+                .filter(Boolean),
+            hobbies: formData.hobbies
+                .split(",")
+                .map((h) => h.trim())
+                .filter(Boolean),
+            projects: formData.projects
+                .split(",")
+                .map((p) => p.trim())
+                .filter(Boolean),
+            certificates: formData.certificates
+                .split(",")
+                .map((c) => c.trim())
+                .filter(Boolean),
         };
+
+        // ✅ Pass data + template correctly
         navigate("/preview", {
-            state: { data: formattedData, templateId, selectedColor },
+            state: {
+                data: formattedData,
+                selectedTemplate: templateId,
+                selectedColor: selectedColor
+            },
         });
     };
 
@@ -86,7 +108,10 @@ export default function Form() {
                         ))}
 
                         <div className="col-12 mt-3">
-                            <button type="submit" className="btn btn-primary w-100 py-3 fw-semibold fs-5">
+                            <button
+                                type="submit"
+                                className="btn btn-primary w-100 py-3 fw-semibold fs-5"
+                            >
                                 🚀 Preview My Resume
                             </button>
                         </div>

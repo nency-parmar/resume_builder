@@ -8,11 +8,6 @@
     --section-heading-color: var(--primary-color);
 }
 
-/* Apply selected theme dynamically */
-.layout1-wrapper[data-color] {
-    --primary-color: attr(data-color color);
-}
-
 .layout1-wrapper {
     display: flex;
     background-color: var(--bg-color);

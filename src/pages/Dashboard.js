@@ -1,43 +1,57 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import templates from "../utils/data"; // your existing templates list
 import TemplateCard from "../components/TemplateCard";
-import templates from "../utils/data";
-import "../styles/template.css";
+import "../styles/dashboard.css";
 
-export default function Home() {
+export default function Dashboard() {
+    const navigate = useNavigate();
     const [search, setSearch] = useState("");
-    const filteredTemplates = templates.filter((t) =>
+
+    // 🔍 Filter by name
+    const filtered = templates.filter((t) =>
         t.name.toLowerCase().includes(search.toLowerCase())
     );
 
+    // 🎨 When user clicks a template → go to color selection
+    const handleUseTemplate = (template) => {
+        navigate(`/color/${template.id}`);
+    };
+
+    // 🌟 Image to show for all cards
+    const cardImage = "https://marketplace.canva.com/EAGmJ13p8zE/1/0/1131w/canva-black-and-white-minimalist-professional-resume-a4-X9UHTVTOsqQ.jpg";
+
     return (
-        <section className="home-page">
-            <div className="templates-header">
-                <h1 className="templates-title">
-                    Choose Your <span>Resume Template</span>
-                </h1>
-                <p className="templates-subtitle">
-                    Explore beautifully designed resume templates made just for you 💼
-                </p>
-            </div>
+        <div className="dashboard-page">
+            <header className="dash-header">
+                <div className="dash-title">
+                    <h1>Choose a Resume Template</h1>
+                </div>
 
-            <input
-                type="text"
-                placeholder="Search templates..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="search-bar"
-            />
+                <div className="dash-actions">
+                    <input
+                        className="dash-search"
+                        type="search"
+                        placeholder="Search templates..."
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        aria-label="Search templates"
+                    />
+                </div>
+            </header>
 
-            <div className="templates-container">
-                {filteredTemplates.length > 0 ? (
-                    filteredTemplates.map((t) => (
-                        <TemplateCard key={t.id} template={t} />
-                    ))
-                ) : (
-                    <p className="no-templates">No templates found 💜</p>
-                )}
-                <button>Preview</button>
-            </div>
-        </section>
+            <main className="templates-grid-wrap">
+                <div className="templates-grid">
+                    {filtered.map((t) => (
+                        <TemplateCard
+                            key={t.id}
+                            template={t}
+                            image={cardImage} // ✅ Pass image here
+                            onUse={() => handleUseTemplate(t)}
+                        />
+                    ))}
+                </div>
+            </main>
+        </div>
     );
 }

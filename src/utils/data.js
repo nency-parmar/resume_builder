@@ -1,25 +1,26 @@
-import Layout1 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout1.js";
-import Layout2 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout2.js";
-import Layout3 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout3.js";
-import Layout4 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout4.js";
-import Layout5 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout5.js";
-import Layout6 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout6.js";
-import Layout7 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout7.js";
-import Layout8 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout8.js";
-import Layout9 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout9.js";
-import Layout10 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout10.js";
-import Layout11 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout11.js";
-import Layout12 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout12.js";
-import Layout13 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout13.js";
-import Layout14 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout14.js";
-import Layout15 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout15.js";
-import Layout16 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout16.js";
-import Layout17 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout17.js";
-import Layout18 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout18.js";
-import Layout19 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout19.js";
-import Layout20 from "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/pages/templates/Layouts/Layout20.js";
+// ✅ Import all 20 layout components
+import Layout1 from "../pages/templates/Layouts/Layout1";
+import Layout2 from "../pages/templates/Layouts/Layout2";
+import Layout3 from "../pages/templates/Layouts/Layout3";
+import Layout4 from "../pages/templates/Layouts/Layout4";
+import Layout5 from "../pages/templates/Layouts/Layout5";
+import Layout6 from "../pages/templates/Layouts/Layout6";
+import Layout7 from "../pages/templates/Layouts/Layout7";
+import Layout8 from "../pages/templates/Layouts/Layout8";
+import Layout9 from "../pages/templates/Layouts/Layout9";
+import Layout10 from "../pages/templates/Layouts/Layout10";
+import Layout11 from "../pages/templates/Layouts/Layout11";
+import Layout12 from "../pages/templates/Layouts/Layout12";
+import Layout13 from "../pages/templates/Layouts/Layout13";
+import Layout14 from "../pages/templates/Layouts/Layout14";
+import Layout15 from "../pages/templates/Layouts/Layout15";
+import Layout16 from "../pages/templates/Layouts/Layout16";
+import Layout17 from "../pages/templates/Layouts/Layout17";
+import Layout18 from "../pages/templates/Layouts/Layout18";
+import Layout19 from "../pages/templates/Layouts/Layout19";
+import Layout20 from "../pages/templates/Layouts/Layout20";
 
-// Common sample data (you can pass this as default or preview data)
+// 🧾 Common sample data (for previews or default templates)
 export const sampleData = {
     name: "Your Name",
     jobTitle: "Full Stack Developer",
@@ -30,7 +31,7 @@ export const sampleData = {
     github: "github.com/username",
     portfolio: "yourportfolio.com",
     summary: "A passionate developer eager to learn and grow.",
-    skills: ["HTML", "CSS", "JS", "React", "Node.js"],
+    skills: ["HTML", "CSS", "JavaScript", "React", "Node.js"],
     experience: [
         {
             position: "Web Developer Intern",
@@ -57,28 +58,28 @@ export const sampleData = {
     achievements: ["Top 10 finalist in Hackathon 2024"],
 };
 
-// All layout templates (you can render them dynamically)
+// 🎨 All templates with professional names and optional thumbnails
 const templates = [
-    { id: 1, name: "Layout 1", component: Layout1 },
-    { id: 2, name: "Layout 2", component: Layout2 },
-    { id: 3, name: "Layout 3", component: Layout3 },
-    { id: 4, name: "Layout 4", component: Layout4 },
-    { id: 5, name: "Layout 5", component: Layout5 },
-    { id: 6, name: "Layout 6", component: Layout6 },
-    { id: 7, name: "Layout 7", component: Layout7 },
-    { id: 8, name: "Layout 8", component: Layout8 },
-    { id: 9, name: "Layout 9", component: Layout9 },
-    { id: 10, name: "Layout 10", component: Layout10 },
-    { id: 11, name: "Layout 11", component: Layout11 },
-    { id: 12, name: "Layout 12", component: Layout12 },
-    { id: 13, name: "Layout 13", component: Layout13 },
-    { id: 14, name: "Layout 14", component: Layout14 },
-    { id: 15, name: "Layout 15", component: Layout15 },
-    { id: 16, name: "Layout 16", component: Layout16 },
-    { id: 17, name: "Layout 17", component: Layout17 },
-    { id: 18, name: "Layout 18", component: Layout18 },
-    { id: 19, name: "Layout 19", component: Layout19 },
-    { id: 20, name: "Layout 20", component: Layout20 },
+    { id: 1, name: "Modern Elegance", component: Layout1, thumbnail: "/thumbs/layout1.png" },
+    { id: 2, name: "Classic Professional", component: Layout2, thumbnail: "/thumbs/layout2.png" },
+    { id: 3, name: "Creative Spark", component: Layout3, thumbnail: "/thumbs/layout3.png" },
+    { id: 4, name: "Minimal Focus", component: Layout4, thumbnail: "/thumbs/layout4.png" },
+    { id: 5, name: "Gradient Glow", component: Layout5, thumbnail: "/thumbs/layout5.png" },
+    { id: 6, name: "Soft Pastel", component: Layout6, thumbnail: "/thumbs/layout6.png" },
+    { id: 7, name: "Corporate Edge", component: Layout7, thumbnail: "/thumbs/layout7.png" },
+    { id: 8, name: "Fresh Horizon", component: Layout8, thumbnail: "/thumbs/layout8.png" },
+    { id: 9, name: "Dynamic Duo", component: Layout9, thumbnail: "/thumbs/layout9.png" },
+    { id: 10, name: "Royal Resume", component: Layout10, thumbnail: "/thumbs/layout10.png" },
+    { id: 11, name: "Vibrant Vision", component: Layout11, thumbnail: "/thumbs/layout11.png" },
+    { id: 12, name: "Elegant Simplicity", component: Layout12, thumbnail: "/thumbs/layout12.png" },
+    { id: 13, name: "Tech Innovator", component: Layout13, thumbnail: "/thumbs/layout13.png" },
+    { id: 14, name: "Dream Builder", component: Layout14, thumbnail: "/thumbs/layout14.png" },
+    { id: 15, name: "Focus Resume", component: Layout15, thumbnail: "/thumbs/layout15.png" },
+    { id: 16, name: "Soft Shadow", component: Layout16, thumbnail: "/thumbs/layout16.png" },
+    { id: 17, name: "Bold Impression", component: Layout17, thumbnail: "/thumbs/layout17.png" },
+    { id: 18, name: "Pastel Harmony", component: Layout18, thumbnail: "/thumbs/layout18.png" },
+    { id: 19, name: "Creative Wave", component: Layout19, thumbnail: "/thumbs/layout19.png" },
+    { id: 20, name: "Elegant Vision", component: Layout20, thumbnail: "/thumbs/layout20.png" },
 ];
 
 export default templates;

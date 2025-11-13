@@ -1,45 +1,65 @@
-/* Thank You */
+/* Thank You Page */
 .thankyou {
-    text-align: center;
-    margin-top: 100px;
-}
-
-.myresumes-page {
-    text-align: center;
-    padding: 2rem;
-    color: #4b2aad;
-    background-color: #f8f5ff;
-    min-height: 100vh;
-}
-
-.resume-list {
-    list-style: none;
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 0;
-}
-
-.resume-item {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 1rem 1.5rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    height: 100vh;
+    background: linear-gradient(135deg, #f3e8ff, #fdfcff);
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: #4b2aad;
+    padding: 20px;
 }
 
-.download-btn {
+.thankyou-card {
+    background: #ffffff;
+    padding: 3rem 4rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(123, 47, 247, 0.15);
+    max-width: 600px;
+    width: 90%;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.thankyou h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #5b1ec7;
+    margin-bottom: 15px;
+}
+
+.thankyou p {
+    font-size: 1.2rem;
+    color: #5a4b91;
+    margin-bottom: 25px;
+}
+
+.home-btn {
     background: linear-gradient(135deg, #a883e9, #8b6cd9);
-    border: none;
     color: white;
-    padding: 0.6rem 1rem;
-    border-radius: 8px;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
     transition: 0.3s ease;
 }
 
-.download-btn:hover {
+.home-btn:hover {
     transform: scale(1.05);
+    background: linear-gradient(135deg, #8b6cd9, #6f49c8);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

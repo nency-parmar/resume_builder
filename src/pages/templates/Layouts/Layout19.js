@@ -16,6 +16,15 @@ export default function Layout19({ data = {}, selectedColor = "#6a1b9a" }) {
         skills = [],
     } = data;
 
+    // Helper to safely parse comma-separated or array data
+    const parseList = (input) =>
+        Array.isArray(input)
+            ? input
+            : input
+                ?.split(",")
+                .map((item) => item.trim())
+                .filter(Boolean) || [];
+
     return (
         <div className="layout19-container">
             {/* Sidebar */}
@@ -24,44 +33,46 @@ export default function Layout19({ data = {}, selectedColor = "#6a1b9a" }) {
                 style={{ backgroundColor: selectedColor }}
             >
                 <div className="sidebar-header">
-                    <h1>{name}</h1>
-                    <p>{email}</p>
-                    <p>{phone}</p>
-                    <p>{address}</p>
-                    <p>{linkedin}</p>
-                    <p>{github}</p>
+                    <h1 style={{ color: "#fff" }}>{name}</h1>
+                    {email && <p style={{ color: "#fff" }}>{email}</p>}
+                    {phone && <p style={{ color: "#fff" }}>{phone}</p>}
+                    {address && <p style={{ color: "#fff" }}>{address}</p>}
+                    {linkedin && <p style={{ color: "#fff" }}>{linkedin}</p>}
+                    {github && <p style={{ color: "#fff" }}>{github}</p>}
                 </div>
 
-                <div className="sidebar-section">
-                    <h2>Skills</h2>
-                    <ul>
-                        {skills.length > 0 ? (
-                            skills.map((skill, index) => <li key={index}>{skill}</li>)
-                        ) : (
-                            <li>No skills added yet</li>
-                        )}
-                    </ul>
-                </div>
+                {parseList(skills).length > 0 && (
+                    <div className="sidebar-section">
+                        <h2 style={{ color: "#fff" }}>Skills</h2>
+                        <ul>
+                            {parseList(skills).map((skill, index) => (
+                                <li key={index}>{skill}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
             </aside>
 
             {/* Main Content */}
             <main className="layout19-main">
-                <section className="layout19-section">
-                    <h2 style={{ color: selectedColor }}>Professional Summary</h2>
-                    <p>{summary}</p>
-                </section>
+                {summary && (
+                    <section className="layout19-section">
+                        <h2 style={{ color: selectedColor }}>Professional Summary</h2>
+                        <p>{summary}</p>
+                    </section>
+                )}
 
                 <section className="layout19-section">
                     <h2 style={{ color: selectedColor }}>Experience</h2>
-                    {experience.length > 0 ? (
+                    {experience?.length > 0 ? (
                         experience.map((exp, index) => (
                             <div key={index} className="layout19-item">
                                 <div className="layout19-item-header">
-                                    <h3>{exp.position || "Job Title"}</h3>
-                                    <span>{exp.duration || "Duration"}</span>
+                                    <h3>{exp.position || exp.role || "Job Title"}</h3>
+                                    {exp.duration && <span>{exp.duration}</span>}
                                 </div>
-                                <p className="company">{exp.company || "Company Name"}</p>
-                                <p>{exp.description || "Brief description of your work."}</p>
+                                {exp.company && <p className="company">{exp.company}</p>}
+                                {exp.description && <p>{exp.description}</p>}
                             </div>
                         ))
                     ) : (
@@ -71,11 +82,11 @@ export default function Layout19({ data = {}, selectedColor = "#6a1b9a" }) {
 
                 <section className="layout19-section">
                     <h2 style={{ color: selectedColor }}>Projects</h2>
-                    {projects.length > 0 ? (
+                    {projects?.length > 0 ? (
                         projects.map((proj, index) => (
                             <div key={index} className="layout19-item">
-                                <h3>{proj.title || "Project Title"}</h3>
-                                <p>{proj.description || "Project description here."}</p>
+                                <h3>{proj.title || proj.name || "Project Title"}</h3>
+                                {proj.description && <p>{proj.description}</p>}
                             </div>
                         ))
                     ) : (
@@ -85,12 +96,12 @@ export default function Layout19({ data = {}, selectedColor = "#6a1b9a" }) {
 
                 <section className="layout19-section">
                     <h2 style={{ color: selectedColor }}>Education</h2>
-                    {education.length > 0 ? (
+                    {education?.length > 0 ? (
                         education.map((edu, index) => (
                             <div key={index} className="layout19-item">
                                 <h3>{edu.degree || "Degree"}</h3>
-                                <p>{edu.institution || "Institution"}</p>
-                                <span>{edu.year || "Year"}</span>
+                                <p>{edu.institution || edu.institute || "Institution"}</p>
+                                {edu.year && <span>{edu.year}</span>}
                             </div>
                         ))
                     ) : (

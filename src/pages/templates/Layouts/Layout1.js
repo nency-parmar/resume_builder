@@ -1,51 +1,41 @@
+// src/pages/templates/Layouts/Layout1.js
 import React from "react";
-import "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/styles/layouts/Layout1.css";
+import "../../../styles/layouts/Layout1.css"; // ✅ relative import for portability
 
-export default function Layout1({ data = {}, color = "#2c3e50" }) {
+export default function Layout1({ data = {}, color = "#7b2ff7" }) {
     const {
         name = "Your Name",
-        jobTitle = "Full Stack Developer",
         email = "email@example.com",
         phone = "+91 XXXXX XXXXX",
         address = "City, State, Country",
         linkedin = "linkedin.com/in/username",
         github = "github.com/username",
-        portfolio = "yourportfolio.com",
-        summary = "A passionate developer eager to learn and grow.",
-        skills = ["HTML", "CSS", "JS", "React", "Node.js"],
-        experience = [
-            {
-                position: "Web Developer Intern",
-                company: "ABC Tech",
-                duration: "Jan 2024 – Dec 2024",
-                description:
-                    "Developed modern UI with React and optimized backend API integration.",
-            },
-        ],
-        education = [
-            { degree: "B.Tech CSE", institute: "Darshan University", year: "2025" },
-        ],
-        projects = [
-            {
-                title: "Resume Builder App",
-                description: "Built an ATS-optimized resume builder using React.js.",
-            },
-        ],
-        certificates = [
-            { title: "Frontend Developer Certificate", issuer: "Udemy", year: "2024" },
-        ],
-        languages = ["English", "Hindi", "Gujarati"],
-        interests = ["UI Design", "Traveling", "Photography"],
-        achievements = ["Top 10 finalist in Hackathon 2024"],
+        workExperience = "",
+        education = "",
+        technicalSkills = [],
+        languagesKnown = [],
+        hobbies = [],
+        projects = [],
+        certificates = [],
+        strength = "",
+        weakness = "",
     } = data;
 
+    // 🧠 Convert string fields to arrays when needed
+    const parseList = (input) =>
+        Array.isArray(input)
+            ? input
+            : input
+                ?.split(",")
+                .map((s) => s.trim())
+                .filter(Boolean) || [];
+
     return (
-        <div className="layout1-wrapper" data-color={color}>
+        <div className="layout1-wrapper" style={{ "--primary-color": color, "--section-heading-color": color }}>
             {/* LEFT SIDEBAR */}
             <aside className="layout1-sidebar">
                 <div className="sidebar-header">
                     <h1>{name}</h1>
-                    <p className="job-title">{jobTitle}</p>
                 </div>
 
                 <div className="sidebar-section">
@@ -57,88 +47,95 @@ export default function Layout1({ data = {}, color = "#2c3e50" }) {
 
                 <div className="sidebar-section">
                     <h4>Links</h4>
-                    <p><a href={`https://${linkedin}`} target="_blank" rel="noreferrer">LinkedIn</a></p>
-                    <p><a href={`https://${github}`} target="_blank" rel="noreferrer">GitHub</a></p>
-                    <p><a href={`https://${portfolio}`} target="_blank" rel="noreferrer">Portfolio</a></p>
+                    {linkedin && (
+                        <p>
+                            <a href={`https://${linkedin}`} target="_blank" rel="noreferrer">
+                                LinkedIn
+                            </a>
+                        </p>
+                    )}
+                    {github && (
+                        <p>
+                            <a href={`https://${github}`} target="_blank" rel="noreferrer">
+                                GitHub
+                            </a>
+                        </p>
+                    )}
                 </div>
 
                 <div className="sidebar-section">
                     <h4>Skills</h4>
                     <ul>
-                        {Array.isArray(skills) && skills.map((s, i) => <li key={i}>{s}</li>)}
+                        {parseList(technicalSkills).map((s, i) => (
+                            <li key={i}>{s}</li>
+                        ))}
                     </ul>
                 </div>
 
                 <div className="sidebar-section">
                     <h4>Languages</h4>
-                    <p>{languages.join(", ")}</p>
+                    <ul>
+                        {parseList(languagesKnown).map((lang, i) => (
+                            <li key={i}>{lang}</li>
+                        ))}
+                    </ul>
                 </div>
 
                 <div className="sidebar-section">
-                    <h4>Interests</h4>
+                    <h4>Hobbies</h4>
                     <ul>
-                        {Array.isArray(interests) &&
-                            interests.map((int, idx) => <li key={idx}>{int}</li>)}
+                        {parseList(hobbies).map((h, i) => (
+                            <li key={i}>{h}</li>
+                        ))}
                     </ul>
                 </div>
             </aside>
 
             {/* MAIN CONTENT */}
             <main className="layout1-main">
-                <section className="section">
-                    <h2>Profile</h2>
-                    <p>{summary}</p>
-                </section>
+                {workExperience && (
+                    <section className="section">
+                        <h2>Work Experience</h2>
+                        <p>{workExperience}</p>
+                    </section>
+                )}
 
-                <section className="section">
-                    <h2>Experience</h2>
-                    {Array.isArray(experience) &&
-                        experience.map((exp, idx) => (
-                            <div key={idx} className="exp-item">
-                                <strong>{exp.position}</strong> — {exp.company} ({exp.duration})
-                                <p>{exp.description}</p>
-                            </div>
-                        ))}
-                </section>
+                {education && (
+                    <section className="section">
+                        <h2>Education</h2>
+                        <p>{education}</p>
+                    </section>
+                )}
 
-                <section className="section">
-                    <h2>Education</h2>
-                    {Array.isArray(education) &&
-                        education.map((edu, idx) => (
-                            <div key={idx} className="edu-item">
-                                <strong>{edu.degree}</strong> — {edu.institute} ({edu.year})
-                            </div>
-                        ))}
-                </section>
+                {projects.length > 0 && (
+                    <section className="section">
+                        <h2>Projects</h2>
+                        <ul>
+                            {parseList(projects).map((p, i) => (
+                                <li key={i}>{p}</li>
+                            ))}
+                        </ul>
+                    </section>
+                )}
 
-                <section className="section">
-                    <h2>Projects</h2>
-                    {Array.isArray(projects) &&
-                        projects.map((proj, idx) => (
-                            <div key={idx} className="proj-item">
-                                <strong>{proj.title}</strong>
-                                <p>{proj.description}</p>
-                            </div>
-                        ))}
-                </section>
+                {certificates.length > 0 && (
+                    <section className="section">
+                        <h2>Certificates</h2>
+                        <ul>
+                            {parseList(certificates).map((c, i) => (
+                                <li key={i}>{c}</li>
+                            ))}
+                        </ul>
+                    </section>
+                )}
 
-                <section className="section">
-                    <h2>Certificates</h2>
-                    {Array.isArray(certificates) &&
-                        certificates.map((cert, idx) => (
-                            <div key={idx} className="cert-item">
-                                {cert.title} — {cert.issuer} ({cert.year})
-                            </div>
-                        ))}
-                </section>
-
-                <section className="section">
-                    <h2>Achievements</h2>
-                    <ul>
-                        {Array.isArray(achievements) &&
-                            achievements.map((a, idx) => <li key={idx}>{a}</li>)}
-                    </ul>
-                </section>
+                {(strength || weakness) && (
+                    <section className="section">
+                        <h2>Personality</h2>
+                        {strength && <p><strong>Strength:</strong> {strength}</p>}
+                        {weakness && <p><strong>Weakness:</strong> {weakness}</p>}
+                    </section>
+                )}
             </main>
         </div>
     );

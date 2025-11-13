@@ -1,25 +1,24 @@
-/* 🌸 BuildMyResume Preview Page - Light Purple & White Theme */
-
 .preview-page {
     min-height: 100vh;
-    background: linear-gradient(135deg, #f8f5ff 0%, #ffffff 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: "Poppins", sans-serif;
-    color: #4b0082;
+    color: #333;
     transition: all 0.3s ease-in-out;
 }
 
-.preview-page h2 {
+/* Title */
+.preview-title {
     font-size: 2.6rem;
     margin-bottom: 30px;
-    color: #7c3aed;
+    color: var(--theme-color);
     text-align: center;
     font-weight: 700;
     letter-spacing: 0.5px;
-    text-shadow: 0 2px 5px rgba(124, 58, 237, 0.15);
+    text-shadow: 0 2px 6px var(--theme-color);
     animation: fadeInDown 0.6s ease-out;
 }
 
@@ -27,25 +26,24 @@
 .resume-preview {
     background: #ffffff;
     border-radius: 16px;
-    box-shadow: 0 12px 35px rgba(124, 58, 237, 0.2);
+    box-shadow: 0 12px 35px var(--theme-color);
     padding: 30px;
     margin-bottom: 40px;
     max-width: 850px;
     width: 100%;
     overflow: hidden;
-    border-top: 6px solid #a855f7;
+    border-top: 6px solid var(--theme-color);
     transition: all 0.4s ease-in-out;
     animation: fadeInUp 0.6s ease-out;
 }
 
 .resume-preview:hover {
     transform: scale(1.01);
-    box-shadow: 0 15px 40px rgba(124, 58, 237, 0.25);
 }
 
 /* Button Styling */
 .btn {
-    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    background: linear-gradient(135deg, var(--theme-color), var(--theme-color));
     color: #fff;
     border: none;
     padding: 14px 34px;
@@ -55,18 +53,16 @@
     cursor: pointer;
     letter-spacing: 0.3px;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+    box-shadow: 0 5px 15px var(--theme-color);
 }
 
 .btn:hover {
-    background: linear-gradient(135deg, #6d28d9, #9333ea);
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+    filter: brightness(1.1);
 }
 
 .btn:active {
     transform: translateY(0);
-    box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
 }
 
 /* ✨ Subtle Animations */
@@ -106,7 +102,7 @@
 }
 
 @media (max-width: 768px) {
-    .preview-page h2 {
+    .preview-title {
         font-size: 2rem;
     }
 
@@ -118,7 +114,7 @@
 }
 
 @media (max-width: 480px) {
-    .preview-page h2 {
+    .preview-title {
         font-size: 1.7rem;
     }
 

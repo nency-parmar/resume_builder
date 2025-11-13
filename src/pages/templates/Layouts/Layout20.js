@@ -13,76 +13,100 @@ export default function Layout20({ data = {}, selectedColor = "#1d3557" }) {
         projects = [],
     } = data;
 
+    // Helper to safely parse comma-separated or array data
+    const parseList = (input) =>
+        Array.isArray(input)
+            ? input
+            : input
+                ?.split(",")
+                .map((item) => item.trim())
+                .filter(Boolean) || [];
+
     return (
         <div className="layout20" style={{ "--theme-color": selectedColor }}>
             {/* Header */}
             <header className="header">
-                <h1>{name}</h1>
-                <p>{email} | {phone}</p>
+                <h1 style={{ color: selectedColor }}>{name}</h1>
+                <p>
+                    {email && <span>{email}</span>}
+                    {phone && <span> | {phone}</span>}
+                </p>
             </header>
 
             {/* Summary */}
-            <section className="summary">
-                <h2>Profile Summary</h2>
-                <p>{summary}</p>
-            </section>
+            {summary && (
+                <section className="summary">
+                    <h2 style={{ color: selectedColor }}>Profile Summary</h2>
+                    <p>{summary}</p>
+                </section>
+            )}
 
             {/* Two-column layout */}
             <div className="main-content">
                 {/* Left column */}
                 <div className="left-column">
                     {/* Skills */}
-                    <section>
-                        <h2>Technical Skills</h2>
-                        <ul>
-                            {skills.map((skill, i) => (
-                                <li key={i}>{skill}</li>
-                            ))}
-                        </ul>
-                    </section>
+                    {parseList(skills).length > 0 && (
+                        <section>
+                            <h2 style={{ color: selectedColor }}>Technical Skills</h2>
+                            <ul>
+                                {parseList(skills).map((skill, i) => (
+                                    <li key={i}>{skill}</li>
+                                ))}
+                            </ul>
+                        </section>
+                    )}
 
                     {/* Education */}
-                    <section>
-                        <h2>Education</h2>
-                        {education.map((edu, i) => (
-                            <div key={i} className="edu-item">
-                                <h3>{edu.degree}</h3>
-                                <p>{edu.institute}</p>
-                                <span>{edu.year}</span>
-                            </div>
-                        ))}
-                    </section>
+                    {education?.length > 0 && (
+                        <section>
+                            <h2 style={{ color: selectedColor }}>Education</h2>
+                            {education.map((edu, i) => (
+                                <div key={i} className="edu-item">
+                                    <h3>{edu.degree || "Degree"}</h3>
+                                    <p>{edu.institute || edu.institution || "Institute"}</p>
+                                    {edu.year && <span>{edu.year}</span>}
+                                </div>
+                            ))}
+                        </section>
+                    )}
                 </div>
 
                 {/* Right column */}
                 <div className="right-column">
                     {/* Experience */}
-                    <section>
-                        <h2>Experience</h2>
-                        {experience.map((exp, i) => (
-                            <div key={i} className="exp-item">
-                                <h3>{exp.role}</h3>
-                                <p className="exp-company">{exp.company}</p>
-                                <p className="exp-duration">{exp.duration}</p>
-                                <ul>
-                                    {exp.description?.split(".").map(
-                                        (d, j) => d.trim() && <li key={j}>{d.trim()}.</li>
+                    {experience?.length > 0 && (
+                        <section>
+                            <h2 style={{ color: selectedColor }}>Experience</h2>
+                            {experience.map((exp, i) => (
+                                <div key={i} className="exp-item">
+                                    <h3>{exp.role || exp.position || "Job Title"}</h3>
+                                    {exp.company && <p className="exp-company">{exp.company}</p>}
+                                    {exp.duration && <p className="exp-duration">{exp.duration}</p>}
+                                    {exp.description && (
+                                        <ul>
+                                            {exp.description
+                                                .split(".")
+                                                .map((d, j) => d.trim() && <li key={j}>{d.trim()}.</li>)}
+                                        </ul>
                                     )}
-                                </ul>
-                            </div>
-                        ))}
-                    </section>
+                                </div>
+                            ))}
+                        </section>
+                    )}
 
                     {/* Projects */}
-                    <section>
-                        <h2>Projects</h2>
-                        {projects.map((proj, i) => (
-                            <div key={i} className="proj-item">
-                                <h3>{proj.title}</h3>
-                                <p>{proj.description}</p>
-                            </div>
-                        ))}
-                    </section>
+                    {projects?.length > 0 && (
+                        <section>
+                            <h2 style={{ color: selectedColor }}>Projects</h2>
+                            {projects.map((proj, i) => (
+                                <div key={i} className="proj-item">
+                                    <h3>{proj.title || proj.name || "Project Title"}</h3>
+                                    {proj.description && <p>{proj.description}</p>}
+                                </div>
+                            ))}
+                        </section>
+                    )}
                 </div>
             </div>
         </div>

@@ -1,7 +1,8 @@
+// src/pages/templates/Layouts/Layout6.js
 import React from "react";
-import "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/styles/layouts/Layout6.css";
+import "../../../styles/layouts/Layout6.css";
 
-export default function Layout6({ data = {} }) {
+export default function Layout6({ data = {}, color = "#6c5ce7" }) {
     const {
         name = "Your Name",
         email = "email@example.com",
@@ -9,7 +10,7 @@ export default function Layout6({ data = {} }) {
         address = "Your City, Country",
         linkedin = "linkedin.com/in/yourprofile",
         github = "github.com/yourprofile",
-        summary = "A passionate developer eager to learn and grow.",
+        summary = "",
         education = [],
         experience = [],
         skills = [],
@@ -17,105 +18,144 @@ export default function Layout6({ data = {} }) {
         achievements = [],
     } = data;
 
+    // 🧠 Safe conversion for string or array
+    const parseList = (input) =>
+        Array.isArray(input)
+            ? input
+            : input
+                ?.split(",")
+                .map((s) => s.trim())
+                .filter(Boolean) || [];
+
     return (
-        <div className="layout6">
+        <div
+            className="layout6"
+            style={{
+                "--primary-color": color,
+                "--heading-color": color,
+            }}
+        >
+            {/* HEADER */}
             <header className="header">
                 <h1 className="name">{name}</h1>
-                <p className="contact">
-                    {email} | {phone} | {address}
-                </p>
-                <p className="links">
-                    <a href={`https://${linkedin}`} target="_blank" rel="noreferrer">
-                        LinkedIn
-                    </a>{" "}
-                    |{" "}
-                    <a href={`https://${github}`} target="_blank" rel="noreferrer">
-                        GitHub
-                    </a>
-                </p>
+
+                {(email || phone || address) && (
+                    <p className="contact">
+                        {email && <span>{email}</span>}
+                        {phone && <span> | {phone}</span>}
+                        {address && <span> | {address}</span>}
+                    </p>
+                )}
+
+                {(linkedin || github) && (
+                    <p className="links">
+                        {linkedin && (
+                            <a href={`https://${linkedin}`} target="_blank" rel="noreferrer">
+                                LinkedIn
+                            </a>
+                        )}
+                        {linkedin && github && " | "}
+                        {github && (
+                            <a href={`https://${github}`} target="_blank" rel="noreferrer">
+                                GitHub
+                            </a>
+                        )}
+                    </p>
+                )}
             </header>
 
-            <section className="summary">
-                <h2>Profile Summary</h2>
-                <p>{summary}</p>
-            </section>
+            {/* SUMMARY */}
+            {summary && (
+                <section className="summary">
+                    <h2>Profile Summary</h2>
+                    <p>{summary}</p>
+                </section>
+            )}
 
-            <section className="education">
-                <h2>Education</h2>
-                {education.length > 0 ? (
-                    education.map((edu, idx) => (
+            {/* EDUCATION */}
+            {education?.length > 0 && (
+                <section className="education">
+                    <h2>Education</h2>
+                    {education.map((edu, idx) => (
                         <div className="edu-item" key={idx}>
-                            <h3>{edu.degree}</h3>
+                            <h3>{edu.degree || "Degree"}</h3>
                             <p>
-                                {edu.institution} — {edu.year}
+                                {edu.institution || edu.college || "Institution"}{" "}
+                                {edu.year && `— ${edu.year}`}
                             </p>
-                            <p className="grade">CGPA: {edu.cgpa}</p>
+                            {edu.cgpa && <p className="grade">CGPA: {edu.cgpa}</p>}
                         </div>
-                    ))
-                ) : (
-                    <p>No education added</p>
-                )}
-            </section>
+                    ))}
+                </section>
+            )}
 
-            <section className="experience">
-                <h2>Experience</h2>
-                {experience.length > 0 ? (
-                    experience.map((exp, idx) => (
+            {/* EXPERIENCE */}
+            {experience?.length > 0 && (
+                <section className="experience">
+                    <h2>Experience</h2>
+                    {experience.map((exp, idx) => (
                         <div className="exp-item" key={idx}>
-                            <h3>{exp.role}</h3>
+                            <h3>{exp.role || exp.position || "Role"}</h3>
                             <p>
-                                {exp.company} | {exp.duration}
+                                {exp.company || "Company"}{" "}
+                                {exp.duration && `| ${exp.duration}`}
                             </p>
-                            <ul>
-                                {exp.details?.split("\n").map((line, i) => (
-                                    <li key={i}>{line}</li>
-                                ))}
-                            </ul>
+                            {exp.details && (
+                                <ul>
+                                    {exp.details
+                                        .split("\n")
+                                        .filter(Boolean)
+                                        .map((line, i) => (
+                                            <li key={i}>{line}</li>
+                                        ))}
+                                </ul>
+                            )}
                         </div>
-                    ))
-                ) : (
-                    <p>No experience added</p>
-                )}
-            </section>
+                    ))}
+                </section>
+            )}
 
-            <section className="projects">
-                <h2>Projects</h2>
-                {projects.length > 0 ? (
-                    projects.map((proj, idx) => (
+            {/* PROJECTS */}
+            {projects?.length > 0 && (
+                <section className="projects">
+                    <h2>Projects</h2>
+                    {projects.map((proj, idx) => (
                         <div className="proj-item" key={idx}>
-                            <h3>{proj.title}</h3>
-                            <p>{proj.description}</p>
-                            <p>
-                                <strong>Tech Used:</strong> {proj.tech}
-                            </p>
+                            <h3>{proj.title || "Project Title"}</h3>
+                            <p>{proj.description || ""}</p>
+                            {proj.tech && (
+                                <p>
+                                    <strong>Tech Used:</strong> {proj.tech}
+                                </p>
+                            )}
                         </div>
-                    ))
-                ) : (
-                    <p>No projects added</p>
-                )}
-            </section>
+                    ))}
+                </section>
+            )}
 
-            <section className="skills">
-                <h2>Skills</h2>
-                <div className="skills-list">
-                    {skills.length > 0 ? (
-                        skills.map((skill, idx) => <span key={idx}>{skill}</span>)
-                    ) : (
-                        <p>No skills added</p>
-                    )}
-                </div>
-            </section>
+            {/* SKILLS */}
+            {parseList(skills).length > 0 && (
+                <section className="skills">
+                    <h2>Skills</h2>
+                    <div className="skills-list">
+                        {parseList(skills).map((skill, idx) => (
+                            <span key={idx}>{skill}</span>
+                        ))}
+                    </div>
+                </section>
+            )}
 
-            <section className="achievements">
-                <h2>Achievements</h2>
-                <ul>
-                    {achievements.length > 0 ? (
-                        achievements.map((ach, idx) => <li key={idx}>{ach}</li>)
-                    ) : (
-                        <p>No achievements added</p>
-                    )}
-                </ul>
-            </section>
+            {/* ACHIEVEMENTS */}
+            {parseList(achievements).length > 0 && (
+                <section className="achievements">
+                    <h2>Achievements</h2>
+                    <ul>
+                        {parseList(achievements).map((ach, idx) => (
+                            <li key={idx}>{ach}</li>
+                        ))}
+                    </ul>
+                </section>
+            )}
         </div>
     );
 }

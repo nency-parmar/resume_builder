@@ -14,29 +14,44 @@ export default function Layout16({ data = {}, selectedColor = "#2c3e50" }) {
         projects = [],
     } = data;
 
+    // Helper to safely parse comma-separated or array data
+    const parseList = (input) =>
+        Array.isArray(input)
+            ? input
+            : input
+                ?.split(",")
+                .map((item) => item.trim())
+                .filter(Boolean) || [];
+
     return (
         <div className="layout16-container" style={{ borderColor: selectedColor }}>
             <header className="layout16-header" style={{ backgroundColor: selectedColor }}>
-                <h1>{name}</h1>
-                <p>{email} | {phone} | {address}</p>
+                <h1 style={{ color: "#fff" }}>{name}</h1>
+                <p style={{ color: "#fff" }}>
+                    {email && <span>{email}</span>}
+                    {phone && <span> | {phone}</span>}
+                    {address && <span> | {address}</span>}
+                </p>
             </header>
 
             <div className="layout16-body">
-                <section className="layout16-summary">
-                    <h2 style={{ color: selectedColor }}>Profile Summary</h2>
-                    <p>{summary}</p>
-                </section>
+                {summary && (
+                    <section className="layout16-summary">
+                        <h2 style={{ color: selectedColor }}>Profile Summary</h2>
+                        <p>{summary}</p>
+                    </section>
+                )}
 
                 <div className="layout16-columns">
                     <div className="layout16-left">
                         <section>
                             <h2 style={{ color: selectedColor }}>Education</h2>
-                            {education.length > 0 ? (
+                            {education?.length > 0 ? (
                                 education.map((edu, i) => (
                                     <div key={i} className="layout16-item">
                                         <h3>{edu.degree || "Degree"}</h3>
-                                        <p>{edu.institution || "University Name"}</p>
-                                        <span>{edu.year || "Year"}</span>
+                                        <p>{edu.institution || edu.institute || "University Name"}</p>
+                                        {edu.year && <span>{edu.year}</span>}
                                     </div>
                                 ))
                             ) : (
@@ -46,26 +61,28 @@ export default function Layout16({ data = {}, selectedColor = "#2c3e50" }) {
 
                         <section>
                             <h2 style={{ color: selectedColor }}>Skills</h2>
-                            <ul>
-                                {skills.length > 0 ? (
-                                    skills.map((skill, i) => <li key={i}>{skill}</li>)
-                                ) : (
-                                    <p>No skills added</p>
-                                )}
-                            </ul>
+                            {parseList(skills).length > 0 ? (
+                                <ul>
+                                    {parseList(skills).map((skill, i) => (
+                                        <li key={i}>{skill}</li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p>No skills added</p>
+                            )}
                         </section>
                     </div>
 
                     <div className="layout16-right">
                         <section>
                             <h2 style={{ color: selectedColor }}>Experience</h2>
-                            {experience.length > 0 ? (
+                            {experience?.length > 0 ? (
                                 experience.map((exp, i) => (
                                     <div key={i} className="layout16-item">
-                                        <h3>{exp.position || "Job Title"}</h3>
-                                        <p>{exp.company || "Company Name"}</p>
-                                        <span>{exp.duration || "Duration"}</span>
-                                        <p>{exp.description || "Job description goes here."}</p>
+                                        <h3>{exp.position || exp.role || "Job Title"}</h3>
+                                        {exp.company && <p>{exp.company}</p>}
+                                        {exp.duration && <span>{exp.duration}</span>}
+                                        {exp.description && <p>{exp.description}</p>}
                                     </div>
                                 ))
                             ) : (
@@ -75,11 +92,11 @@ export default function Layout16({ data = {}, selectedColor = "#2c3e50" }) {
 
                         <section>
                             <h2 style={{ color: selectedColor }}>Projects</h2>
-                            {projects.length > 0 ? (
+                            {projects?.length > 0 ? (
                                 projects.map((proj, i) => (
                                     <div key={i} className="layout16-item">
-                                        <h3>{proj.title || "Project Title"}</h3>
-                                        <p>{proj.description || "Project description goes here."}</p>
+                                        <h3>{proj.title || proj.name || "Project Title"}</h3>
+                                        {proj.description && <p>{proj.description}</p>}
                                     </div>
                                 ))
                             ) : (

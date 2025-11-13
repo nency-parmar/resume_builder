@@ -1,8 +1,8 @@
-// components/templates/Layout12.js
+// src/pages/templates/Layouts/Layout12.js
 import React from "react";
-import "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/styles/layouts/Layout12.css";
+import "../../../styles/layouts/Layout12.css";
 
-export default function Layout12({ data = {}, selectedColor = "#7c3aed" }) {
+export default function Layout12({ data = {}, color = "#7c3aed" }) {
     const {
         name = "Your Name",
         title = "UI/UX Designer & Frontend Developer",
@@ -20,130 +20,129 @@ export default function Layout12({ data = {}, selectedColor = "#7c3aed" }) {
         photo = "https://via.placeholder.com/150",
     } = data;
 
+    // Helper to safely parse comma-separated or array data
+    const parseList = (input) =>
+        Array.isArray(input)
+            ? input
+            : input
+                ?.split(",")
+                .map((item) => item.trim())
+                .filter(Boolean) || [];
+
     return (
-        <div className="layout12-container">
-            {/* Left Sidebar */}
-            <aside
-                className="layout12-sidebar"
-                style={{ backgroundColor: selectedColor }}
-            >
+        <div
+            className="layout12-container"
+            style={{
+                "--primary-color": color,
+                "--accent-color": color,
+            }}
+        >
+            {/* LEFT SIDEBAR */}
+            <aside className="layout12-sidebar" style={{ backgroundColor: "var(--primary-color)" }}>
                 <div className="profile-photo">
                     <img src={photo} alt="Profile" />
                 </div>
 
                 <div className="sidebar-content">
+                    {/* Contact */}
                     <h2>Contact</h2>
-                    <p>{email}</p>
-                    <p>{phone}</p>
-                    <p>{address}</p>
+                    {email && <p>{email}</p>}
+                    {phone && <p>{phone}</p>}
+                    {address && <p>{address}</p>}
 
-                    <h2>Links</h2>
-                    <p>{linkedin}</p>
-                    <p>{github}</p>
+                    {/* Links */}
+                    {(linkedin || github) && <h2>Links</h2>}
+                    {linkedin && (
+                        <p>
+                            <a href={`https://${linkedin}`} target="_blank" rel="noreferrer">
+                                LinkedIn
+                            </a>
+                        </p>
+                    )}
+                    {github && (
+                        <p>
+                            <a href={`https://${github}`} target="_blank" rel="noreferrer">
+                                GitHub
+                            </a>
+                        </p>
+                    )}
 
-                    <h2>Skills</h2>
-                    <ul>
-                        {(skills.length
-                            ? skills
-                            : ["React", "Figma", "Node.js", "Tailwind", "JavaScript"]
-                        ).map((s, i) => (
-                            <li key={i}>{s}</li>
-                        ))}
-                    </ul>
+                    {/* Skills */}
+                    {parseList(skills).length > 0 && (
+                        <>
+                            <h2>Skills</h2>
+                            <ul>
+                                {parseList(skills).map((s, i) => (
+                                    <li key={i}>{s}</li>
+                                ))}
+                            </ul>
+                        </>
+                    )}
                 </div>
             </aside>
 
-            {/* Right Content Area */}
+            {/* RIGHT MAIN CONTENT */}
             <main className="layout12-main">
+                {/* Header */}
                 <header>
-                    <h1 style={{ color: selectedColor }}>{name}</h1>
+                    <h1 style={{ color: "var(--primary-color)" }}>{name}</h1>
                     <h3>{title}</h3>
-                    <p className="summary">{summary}</p>
+                    {summary && <p className="summary">{summary}</p>}
                 </header>
 
                 {/* Experience */}
-                <section>
-                    <h2 style={{ color: selectedColor }}>Experience</h2>
-                    {experience.length
-                        ? experience.map((exp, i) => (
+                {experience?.length > 0 && (
+                    <section>
+                        <h2 style={{ color: "var(--primary-color)" }}>Experience</h2>
+                        {experience.map((exp, i) => (
                             <div key={i} className="exp-item">
-                                <h4>{exp.role}</h4>
-                                <p className="company">{exp.company}</p>
-                                <span className="duration">{exp.duration}</span>
-                                <p className="desc">{exp.description}</p>
-                            </div>
-                        ))
-                        : [
-                            {
-                                role: "Frontend Developer Intern",
-                                company: "Creative Labs Pvt. Ltd.",
-                                duration: "May 2024 - July 2024",
-                                description:
-                                    "Designed UI layouts and implemented responsive web components using React and Tailwind.",
-                            },
-                        ].map((exp, i) => (
-                            <div key={i} className="exp-item">
-                                <h4>{exp.role}</h4>
-                                <p className="company">{exp.company}</p>
-                                <span className="duration">{exp.duration}</span>
-                                <p className="desc">{exp.description}</p>
+                                <h4>{exp.role || "Role"}</h4>
+                                {exp.company && <p className="company">{exp.company}</p>}
+                                {exp.duration && <span className="duration">{exp.duration}</span>}
+                                {exp.description && <p className="desc">{exp.description}</p>}
                             </div>
                         ))}
-                </section>
+                    </section>
+                )}
 
                 {/* Education */}
-                <section>
-                    <h2 style={{ color: selectedColor }}>Education</h2>
-                    {(education.length
-                        ? education
-                        : [
-                            {
-                                degree: "B.Tech in Computer Science",
-                                institute: "Darshan University",
-                                year: "2022 - 2026",
-                            },
-                        ]
-                    ).map((edu, i) => (
-                        <div key={i} className="edu-item">
-                            <h4>{edu.degree}</h4>
-                            <p>{edu.institute}</p>
-                            <span>{edu.year}</span>
-                        </div>
-                    ))}
-                </section>
+                {education?.length > 0 && (
+                    <section>
+                        <h2 style={{ color: "var(--primary-color)" }}>Education</h2>
+                        {education.map((edu, i) => (
+                            <div key={i} className="edu-item">
+                                <h4>{edu.degree || "Degree"}</h4>
+                                <p>{edu.institute || "Institute"}</p>
+                                {edu.year && <span>{edu.year}</span>}
+                            </div>
+                        ))}
+                    </section>
+                )}
 
                 {/* Projects */}
-                <section>
-                    <h2 style={{ color: selectedColor }}>Projects</h2>
-                    {(projects.length
-                        ? projects
-                        : [
-                            {
-                                name: "BuildMyResume",
-                                description:
-                                    "Developed an ATS-friendly Resume Builder with multiple dynamic templates and customizable color themes.",
-                            },
-                        ]
-                    ).map((proj, i) => (
-                        <div key={i} className="proj-item">
-                            <h4>{proj.name}</h4>
-                            <p>{proj.description}</p>
-                        </div>
-                    ))}
-                </section>
+                {projects?.length > 0 && (
+                    <section>
+                        <h2 style={{ color: "var(--primary-color)" }}>Projects</h2>
+                        {projects.map((proj, i) => (
+                            <div key={i} className="proj-item">
+                                <h4>{proj.name || "Project Title"}</h4>
+                                {proj.description && <p>{proj.description}</p>}
+                            </div>
+                        ))}
+                    </section>
+                )}
 
                 {/* Achievements */}
-                <section>
-                    <h2 style={{ color: selectedColor }}>Achievements</h2>
-                    <ul>
-                        {(achievements.length
-                            ? achievements
-                            : ["Best UI Design Award 2024", "Top 10 in Hackathon at DU"]
-                        ).map((a, i) => (
-                            <li key={i}>{a}</li>
-                        ))}
-                    </ul>
-                </section>
+                {parseList(achievements).length > 0 && (
+                    <section>
+                        <h2 style={{ color: "var(--primary-color)" }}>Achievements</h2>
+                        <ul>
+                            {parseList(achievements).map((a, i) => (
+                                <li key={i}>{a}</li>
+                            ))}
+                        </ul>
+                    </section>
+                )}
             </main>
         </div>
     );

@@ -1,191 +1,206 @@
-body {
-    font-family: "Poppins", sans-serif;
+/* src/styles/dashboard.css */
+
+/* Theme colors */
+:root {
+    --lp-50: #f6f0ff;
+    --lp-100: #efe6ff;
+    --lp-300: #cbb8ff;
+    --lp-500: #8f63ff;
+    --white: #ffffff;
+    --muted: #6b6b7a;
+    --card-shadow: 0 6px 18px rgba(63, 44, 120, 0.08);
+    --radius: 12px;
+    --max-width: 1200px;
+}
+
+body,
+.dashboard-page {
+    background: var(--lp-50);
+    color: #222;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Header */
+.dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 28px 18px;
+    max-width: var(--max-width);
+    margin: 0 auto 16px auto;
+}
+
+.dash-title h1 {
     margin: 0;
-    background-color: #faf7ff;
-    color: #333;
+    color: var(--lp-500);
+    font-size: 24px;
 }
 
-/* Dashboard Container */
-.dashboard {
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #faf6ff, #f2ebff);
-    text-align: center;
-    min-height: 100vh;
+.dash-sub {
+    margin: 4px 0 0 0;
+    color: var(--muted);
+    font-size: 13px;
 }
 
-/* Dashboard Title */
-.dashboard-title {
-    color: #6a1b9a;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-
-/* Search Bar */
-.search-bar {
-    padding: 10px 15px;
+/* Search */
+.dash-search {
+    padding: 10px 14px;
     border-radius: 10px;
-    border: 1px solid #d0b3ff;
-    width: 60%;
-    max-width: 400px;
-    margin-bottom: 30px;
-    outline: none;
-    font-size: 1rem;
-    background-color: #f8f5ff;
-    color: #4b2aad;
-    box-shadow: 0 2px 10px rgba(123, 47, 247, 0.08);
-    transition: border-color 0.2s;
+    border: 1px solid rgba(143, 99, 255, 0.16);
+    width: 220px;
+    background: var(--white);
+    box-shadow: var(--card-shadow);
 }
 
-.search-bar:focus {
-    border-color: #a66bff;
+/* Grid wrapper */
+.templates-grid-wrap {
+    padding: 12px 18px 60px;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
-/* Templates Grid: 3 columns per row */
-.dashboard-templates {
+/* Grid: 3 columns on desktop */
+.templates-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* 3 columns */
-    gap: 40px;
-    margin-top: 10px;
-    justify-items: center;
+    gap: 18px;
 }
 
-/* Bigger Card Size */
-.dashboard-card {
-    width: 320px;
-    height: 280px;
-    border-radius: 18px;
-    background: #fff;
-    box-shadow: 0 8px 24px rgba(123, 47, 247, 0.18);
+/* card */
+.template-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 14px;
+    box-shadow: var(--card-shadow);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 18px;
-    transition: transform 0.24s, box-shadow 0.26s;
-    font-size: 1.15rem;
-    margin-bottom: 10px;
+    height: 100%;
+    transition: transform .18s ease, box-shadow .18s ease;
 }
 
+.template-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(63, 44, 120, 0.12);
+}
 
-/* Single Template Card */
-.dashboard-card {
-    width: 200px;
-    height: 180px;
-    border-radius: 15px;
-    background: #fff;
-    box-shadow: 0 4px 12px rgba(123, 47, 247, 0.10);
+.template-thumb {
+    height: 160px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(143, 99, 255, 0.06), rgba(143, 99, 255, 0.02));
+    margin-bottom: 12px;
+}
+
+.template-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Info */
+.template-info {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.22s, box-shadow 0.24s;
-    cursor: pointer;
-    margin-bottom: 5px;
-    padding: 12px;
+    gap: 10px;
 }
 
-.dashboard-card:hover {
-    transform: translateY(-7px) scale(1.02);
-    box-shadow: 0 8px 24px rgba(123, 47, 247, 0.18);
+.template-name {
+    margin: 0;
+    color: var(--lp-500);
+    font-size: 18px;
 }
 
-/* Card Icon */
-.template-icon {
-    font-size: 2.5rem;
-    margin-bottom: 8px;
+.template-desc {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
 }
 
-/* Card Name */
-.dashboard-card h3 {
-    margin: 8px 0;
-    color: #6a1b9a;
-    font-weight: 600;
-    font-size: 1.2rem;
+/* buttons */
+.template-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
 }
 
-/* Customize Button */
-.customize-btn {
-    background-color: #8e44ad;
-    color: #fff;
-    border: none;
+.btn {
+    padding: 8px 12px;
     border-radius: 8px;
-    padding: 8px 15px;
-    font-weight: 500;
-    cursor: pointer;
-    margin-top: 15px;
-    font-size: 1rem;
-    transition: background 0.22s, transform 0.22s;
-}
-
-.customize-btn:hover {
-    background-color: #732d91;
-    transform: scale(1.05);
-}
-
-/* View More Button */
-.view-more-btn {
-    margin-top: 40px;
-    background-color: #a66bff;
-    color: #fff;
     border: none;
-    border-radius: 25px;
-    padding: 12px 25px;
-    font-weight: 500;
     cursor: pointer;
-    font-size: 1.1rem;
-    transition: background 0.24s, transform 0.22s;
-    box-shadow: 0 2px 10px rgba(180, 145, 244, 0.10);
+    font-weight: 600;
+    font-size: 14px;
 }
 
-.view-more-btn:hover {
-    background-color: #7b2ff7;
-    transform: scale(1.07);
+.btn-primary {
+    background: linear-gradient(90deg, var(--lp-500), #6b3fff);
+    color: white;
+    box-shadow: 0 6px 12px rgba(143, 99, 255, 0.18);
 }
 
-/* Responsive Design */
-@media (max-width: 1000px) {
-    .dashboard-templates {
-        gap: 17px;
+.btn-outline {
+    background: transparent;
+    border: 1px solid rgba(143, 99, 255, 0.18);
+    color: var(--lp-500);
+}
+
+/* MyResumes saved cards */
+.saved-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.saved-card {
+    background: var(--white);
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+}
+
+/* empty */
+.myresumes-empty {
+    padding: 40px;
+    text-align: center;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 980px) {
+    .templates-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .dashboard-card {
-        width: 180px;
-        height: 150px;
-        font-size: 0.95rem;
+    .saved-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dash-search {
+        width: 170px;
     }
 }
 
 @media (max-width: 600px) {
-    .dashboard {
-        padding: 24px 5px;
+    .templates-grid {
+        grid-template-columns: 1fr;
     }
 
-    .dashboard-card {
-        width: 97vw;
-        min-width: 140px;
-        height: auto;
-        margin-bottom: 10px;
-        font-size: 0.92rem;
+    .saved-grid {
+        grid-template-columns: 1fr;
     }
 
-    .dashboard-templates {
+    .dash-header {
+        padding: 18px;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        gap: 10px;
     }
 
-    .search-bar {
-        width: 90vw;
-        font-size: 1em;
-    }
-
-    .dashboard-title {
-        font-size: 1.4em;
-    }
-
-    .view-more-btn {
-        width: 100%;
-        padding: 14px 0;
+    .template-thumb {
+        height: 140px;
     }
 }

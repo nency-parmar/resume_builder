@@ -35,6 +35,17 @@ export default function Layout3({ data = {} }) {
         achievements = ["Winner of Designathon 2024", "3rd Place in Creative UI Challenge"],
     } = data;
 
+    // ✅ Convert string → array safely
+    const parseList = (val) =>
+        Array.isArray(val)
+            ? val
+            : val
+                ? val.split(",").map((v) => v.trim()).filter(Boolean)
+                : [];
+
+    // ✅ Always return array
+    const safeArray = (val) => (Array.isArray(val) ? val : parseList(val));
+
     return (
         <div className="layout3-container">
             <header className="header">
@@ -57,7 +68,7 @@ export default function Layout3({ data = {} }) {
             <section className="skills">
                 <h3>Skills</h3>
                 <div className="skill-tags">
-                    {skills.map((skill, idx) => (
+                    {safeArray(skills).map((skill, idx) => (
                         <span key={idx} className="skill">
                             {skill}
                         </span>
@@ -67,34 +78,34 @@ export default function Layout3({ data = {} }) {
 
             <section className="experience">
                 <h3>Experience</h3>
-                {experience.map((exp, idx) => (
+                {safeArray(experience).map((exp, idx) => (
                     <div key={idx} className="exp-card">
                         <h4>
-                            {exp.position} @ {exp.company}
+                            {exp.position || "Position"} @ {exp.company || "Company"}
                         </h4>
                         <p className="duration">{exp.duration}</p>
-                        <p>{exp.details}</p>
+                        <p>{exp.details || exp}</p>
                     </div>
                 ))}
             </section>
 
             <section className="projects">
                 <h3>Projects</h3>
-                {projects.map((proj, idx) => (
+                {safeArray(projects).map((proj, idx) => (
                     <div key={idx} className="project-card">
-                        <h4>{proj.title}</h4>
+                        <h4>{proj.title || proj}</h4>
                         <p className="tech">{proj.tech}</p>
-                        <p>{proj.description}</p>
+                        <p>{proj.description || proj}</p>
                     </div>
                 ))}
             </section>
 
             <section className="education">
                 <h3>Education</h3>
-                {education.map((edu, idx) => (
+                {safeArray(education).map((edu, idx) => (
                     <div key={idx} className="edu-card">
-                        <h4>{edu.degree}</h4>
-                        <p>{edu.college}</p>
+                        <h4>{edu.degree || edu}</h4>
+                        <p>{edu.college || edu.institute}</p>
                         <p className="duration">{edu.year}</p>
                     </div>
                 ))}
@@ -104,7 +115,7 @@ export default function Layout3({ data = {} }) {
                 <div className="languages">
                     <h3>Languages</h3>
                     <ul>
-                        {languages.map((lang, idx) => (
+                        {safeArray(languages).map((lang, idx) => (
                             <li key={idx}>{lang}</li>
                         ))}
                     </ul>
@@ -113,7 +124,7 @@ export default function Layout3({ data = {} }) {
                 <div className="achievements">
                     <h3>Achievements</h3>
                     <ul>
-                        {achievements.map((ach, idx) => (
+                        {safeArray(achievements).map((ach, idx) => (
                             <li key={idx}>{ach}</li>
                         ))}
                     </ul>

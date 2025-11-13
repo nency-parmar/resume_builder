@@ -1,0 +1,132 @@
+/* 🎨 Color Selector Page Styles */
+
+.color-selector-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #faf7ff 0%, #f3ecff 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    padding: 40px 20px;
+    color: #3b1e54;
+    text-align: center;
+}
+
+.color-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #6a1b9a;
+    margin-bottom: 2rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 5px rgba(120, 90, 200, 0.15);
+    animation: fadeInDown 0.6s ease;
+}
+
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 550px;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.6s ease;
+}
+
+.color-box {
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border: 3px solid transparent;
+}
+
+.color-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.color-box.selected {
+    border-color: #6a1b9a;
+    transform: scale(1.15);
+    box-shadow: 0 8px 25px rgba(106, 27, 154, 0.3);
+}
+
+/* Continue Button */
+.color-continue-btn {
+    background: linear-gradient(135deg, #8e44ad, #a66bff);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(123, 47, 247, 0.3);
+    transition: all 0.3s ease;
+}
+
+.color-continue-btn:hover {
+    background: linear-gradient(135deg, #732d91, #944dff);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(123, 47, 247, 0.4);
+}
+
+.color-continue-btn:active {
+    transform: translateY(0);
+}
+
+/* ✨ Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+    .color-title {
+        font-size: 2rem;
+    }
+
+    .color-box {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .color-title {
+        font-size: 1.7rem;
+    }
+
+    .color-box {
+        width: 50px;
+        height: 50px;
+    }
+
+    .color-continue-btn {
+        width: 90%;
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}

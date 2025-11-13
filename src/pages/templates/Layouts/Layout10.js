@@ -1,8 +1,8 @@
-// components/templates/Layout10.js
+// src/pages/templates/Layouts/Layout10.js
 import React from "react";
-import "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/styles/layouts/Layout10.css";
+import "../../../styles/layouts/Layout10.css";
 
-export default function Layout10({ data = {}, selectedColor = "#34495e" }) {
+export default function Layout10({ data = {}, color = "#34495e" }) {
     const {
         name = "Your Name",
         title = "Software Engineer",
@@ -11,7 +11,7 @@ export default function Layout10({ data = {}, selectedColor = "#34495e" }) {
         address = "City, State, Country",
         linkedin = "linkedin.com/in/username",
         github = "github.com/username",
-        summary = "Innovative developer passionate about crafting scalable applications and delivering impactful solutions.",
+        summary = "",
         skills = [],
         education = [],
         experience = [],
@@ -19,142 +19,143 @@ export default function Layout10({ data = {}, selectedColor = "#34495e" }) {
         achievements = [],
     } = data;
 
+    // 🧠 Safe list parser
+    const parseList = (input) =>
+        Array.isArray(input)
+            ? input
+            : input
+                ?.split(",")
+                .map((s) => s.trim())
+                .filter(Boolean) || [];
+
     return (
-        <div className="layout10-container">
+        <div
+            className="layout10-container"
+            style={{
+                "--primary-color": color,
+            }}
+        >
+            {/* HEADER */}
             <header
                 className="layout10-header"
-                style={{ backgroundColor: selectedColor }}
+                style={{ backgroundColor: "var(--primary-color)" }}
             >
                 <h1>{name}</h1>
                 <h3>{title}</h3>
             </header>
 
-            <section className="layout10-contact">
-                <p>{email}</p>
-                <p>{phone}</p>
-                <p>{address}</p>
-                <p>{linkedin}</p>
-                <p>{github}</p>
-            </section>
+            {/* CONTACT */}
+            {(email || phone || address || linkedin || github) && (
+                <section className="layout10-contact">
+                    {email && <p>{email}</p>}
+                    {phone && <p>{phone}</p>}
+                    {address && <p>{address}</p>}
+                    {linkedin && (
+                        <p>
+                            <a
+                                href={`https://${linkedin}`}
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                {linkedin}
+                            </a>
+                        </p>
+                    )}
+                    {github && (
+                        <p>
+                            <a
+                                href={`https://${github}`}
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                {github}
+                            </a>
+                        </p>
+                    )}
+                </section>
+            )}
 
-            <section className="layout10-summary">
-                <h4 style={{ color: selectedColor }}>Profile Summary</h4>
-                <p>{summary}</p>
-            </section>
+            {/* SUMMARY */}
+            {summary && (
+                <section className="layout10-summary">
+                    <h4>Profile Summary</h4>
+                    <p>{summary}</p>
+                </section>
+            )}
 
-            <section className="layout10-experience">
-                <h4 style={{ color: selectedColor }}>Experience</h4>
-                {experience.length
-                    ? experience.map((exp, i) => (
+            {/* EXPERIENCE */}
+            {experience?.length > 0 && (
+                <section className="layout10-experience">
+                    <h4>Experience</h4>
+                    {experience.map((exp, i) => (
                         <div key={i} className="exp-item">
                             <div className="exp-title">
-                                <h5>{exp.role}</h5>
-                                <span>{exp.duration}</span>
+                                <h5>{exp.role || exp.position || "Role"}</h5>
+                                {exp.duration && <span>{exp.duration}</span>}
                             </div>
-                            <p className="exp-company">{exp.company}</p>
-                            <p className="exp-desc">{exp.description}</p>
-                        </div>
-                    ))
-                    : [
-                        {
-                            role: "Frontend Developer",
-                            company: "ABC Pvt. Ltd.",
-                            duration: "Jan 2024 - Present",
-                            description:
-                                "Built reusable React components and optimized UI for performance.",
-                        },
-                    ].map((exp, i) => (
-                        <div key={i} className="exp-item">
-                            <div className="exp-title">
-                                <h5>{exp.role}</h5>
-                                <span>{exp.duration}</span>
-                            </div>
-                            <p className="exp-company">{exp.company}</p>
-                            <p className="exp-desc">{exp.description}</p>
+                            <p className="exp-company">
+                                {exp.company || "Company"}
+                            </p>
+                            {exp.description && (
+                                <p className="exp-desc">{exp.description}</p>
+                            )}
                         </div>
                     ))}
-            </section>
+                </section>
+            )}
 
-            <section className="layout10-education">
-                <h4 style={{ color: selectedColor }}>Education</h4>
-                {education.length
-                    ? education.map((edu, i) => (
+            {/* EDUCATION */}
+            {education?.length > 0 && (
+                <section className="layout10-education">
+                    <h4>Education</h4>
+                    {education.map((edu, i) => (
                         <div key={i} className="edu-item">
                             <div className="edu-title">
-                                <h5>{edu.degree}</h5>
-                                <span>{edu.year}</span>
+                                <h5>{edu.degree || "Degree"}</h5>
+                                {edu.year && <span>{edu.year}</span>}
                             </div>
-                            <p>{edu.institute}</p>
-                        </div>
-                    ))
-                    : [
-                        {
-                            degree: "B.Tech in Computer Science",
-                            institute: "Darshan University",
-                            year: "2022 - 2026",
-                        },
-                    ].map((edu, i) => (
-                        <div key={i} className="edu-item">
-                            <div className="edu-title">
-                                <h5>{edu.degree}</h5>
-                                <span>{edu.year}</span>
-                            </div>
-                            <p>{edu.institute}</p>
+                            <p>{edu.institute || edu.college || "Institute"}</p>
                         </div>
                     ))}
-            </section>
+                </section>
+            )}
 
-            <section className="layout10-skills">
-                <h4 style={{ color: selectedColor }}>Skills</h4>
-                <ul>
-                    {skills.length
-                        ? skills.map((s, i) => <li key={i}>{s}</li>)
-                        : [
-                            "React.js",
-                            "Node.js",
-                            "MongoDB",
-                            "Express",
-                            "HTML5",
-                            "CSS3",
-                        ].map((s, i) => (
+            {/* SKILLS */}
+            {parseList(skills).length > 0 && (
+                <section className="layout10-skills">
+                    <h4>Skills</h4>
+                    <ul>
+                        {parseList(skills).map((s, i) => (
                             <li key={i}>{s}</li>
                         ))}
-                </ul>
-            </section>
+                    </ul>
+                </section>
+            )}
 
-            <section className="layout10-projects">
-                <h4 style={{ color: selectedColor }}>Projects</h4>
-                {projects.length
-                    ? projects.map((proj, i) => (
+            {/* PROJECTS */}
+            {projects?.length > 0 && (
+                <section className="layout10-projects">
+                    <h4>Projects</h4>
+                    {projects.map((proj, i) => (
                         <div key={i} className="proj-item">
-                            <h5>{proj.name}</h5>
-                            <p>{proj.description}</p>
-                        </div>
-                    ))
-                    : [
-                        {
-                            name: "BuildMyResume App",
-                            description:
-                                "Created an ATS-friendly resume builder with multiple templates and PDF export.",
-                        },
-                    ].map((proj, i) => (
-                        <div key={i} className="proj-item">
-                            <h5>{proj.name}</h5>
-                            <p>{proj.description}</p>
+                            <h5>{proj.name || proj.title || "Project Title"}</h5>
+                            <p>{proj.description || ""}</p>
                         </div>
                     ))}
-            </section>
+                </section>
+            )}
 
-            <section className="layout10-achievements">
-                <h4 style={{ color: selectedColor }}>Achievements</h4>
-                <ul>
-                    {achievements.length
-                        ? achievements.map((a, i) => <li key={i}>{a}</li>)
-                        : ["Best Coder Award 2024", "Published 2 Web Dev Articles"].map(
-                            (a, i) => <li key={i}>{a}</li>
-                        )}
-                </ul>
-            </section>
+            {/* ACHIEVEMENTS */}
+            {parseList(achievements).length > 0 && (
+                <section className="layout10-achievements">
+                    <h4>Achievements</h4>
+                    <ul>
+                        {parseList(achievements).map((a, i) => (
+                            <li key={i}>{a}</li>
+                        ))}
+                    </ul>
+                </section>
+            )}
         </div>
     );
 }
