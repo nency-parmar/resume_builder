@@ -1,7 +1,7 @@
 // src/components/ColorSelector.js
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import "/Users/nencyy/Desktop/React/ResumeBuilder/ats-resume-builder/src/styles/colorSelector.css";
+import "/Users/nencyy/Desktop/React/ResumeBuilder/resume-builder/src/styles/colorSelector.css";
 
 export default function ColorSelector() {
     const { templateId } = useParams();
