@@ -1,5 +1,5 @@
 import React from "react";
-import "/Users/nencyy/Desktop/React/ResumeBuilder/resume-builder/src/styles/layouts/Layout17.css";
+import "../../../styles/layouts/Layout17.css";
 import { Briefcase, GraduationCap, Code, User } from "lucide-react"; // for icons
 
 export default function Layout17({ data = {}, selectedColor = "#1d3557" }) {

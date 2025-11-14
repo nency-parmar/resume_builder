@@ -1,5 +1,5 @@
 import React from "react";
-import "/Users/nencyy/Desktop/React/ResumeBuilder/resume-builder/src/styles/about.css";
+import "../styles/about.css";
 
 export default function About() {
   return (

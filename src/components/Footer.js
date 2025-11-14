@@ -1,5 +1,5 @@
 import React from "react";
-import "/Users/nencyy/Desktop/React/ResumeBuilder/resume-builder/src/styles/footer.css";
+import "../styles/footer.css";
 
 export default function Footer() {
     return (

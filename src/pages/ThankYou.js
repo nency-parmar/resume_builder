@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "/Users/nencyy/Desktop/React/ResumeBuilder/resume-builder/src/thankyou.css";
+import "../App.css";
 
 export default function ThankYou() {
     const navigate = useNavigate();

@@ -1,5 +1,5 @@
 import React from "react";
-import "/Users/nencyy/Desktop/React/ResumeBuilder/resume-builder/src/styles/layouts/Layout3.css";
+import "../../../styles/layouts/Layout3.css";
 
 export default function Layout3({ data = {} }) {
     const {

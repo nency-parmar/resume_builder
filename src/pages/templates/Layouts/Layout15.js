@@ -1,5 +1,5 @@
 import React from "react";
-import "/Users/nencyy/Desktop/React/ResumeBuilder/resume-builder/src/styles/layouts/Layout15.css";
+import "../../../styles/layouts/Layout15.css";
 
 export default function Layout15({ data = {}, color = "#7c3aed" }) {
     const {
